@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kwak Laboratory | Yonsei University</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#ffffff;
+  --bg2:#f8f8f6;
+  --text:#1a1a2e;
+  --text2:#555566;
+  --text3:#999aaa;
+  --accent:#003087;
+  --accent2:#0047c8;
+  --border:#e8e8ec;
+  --nav-h:68px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased;}
+
+/* ── NAV ── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:var(--nav-h);
+  background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;
+}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2.5rem;width:100%;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;flex-direction:column;cursor:pointer;gap:2px;}
+.nav-logo-main{font-size:0.9rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text);line-height:1;}
+.nav-logo-sub{font-size:0.62rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--text3);line-height:1;}
+.nav-links{display:flex;align-items:center;gap:0;}
+.nl{
+  font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--text2);cursor:pointer;padding:0.5rem 1.1rem;
+  border:none;background:none;
+  position:relative;transition:color 0.2s;
+}
+.nl::after{content:'';position:absolute;bottom:-1px;left:50%;right:50%;height:2px;background:var(--accent);transition:all 0.25s;}
+.nl:hover{color:var(--accent);}
+.nl:hover::after,.nl.act::after{left:1.1rem;right:1.1rem;}
+.nl.act{color:var(--accent);}
+
+/* ── SHARED ── */
+.pg{padding-top:var(--nav-h);min-height:100vh;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 2.5rem;}
+.sec{padding:6rem 0;}
+.sec-alt{background:var(--bg2);}
+.label{
+  display:inline-block;font-size:0.65rem;font-weight:600;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.2rem;
+}
+.h2{
+  font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;
+  letter-spacing:-0.01em;color:var(--text);
+  line-height:1.2;margin-bottom:1.4rem;
+}
+.h2 strong{font-weight:600;}
+.body-text{font-size:0.95rem;color:var(--text2);line-height:1.85;max-width:58ch;}
+.divider{height:1px;background:var(--border);margin:0;}
+
+/* ── HERO ── */
+.hero{
+  padding:8rem 0 7rem;
+  border-bottom:1px solid var(--border);
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg-text{
+  position:absolute;top:50%;right:-2rem;transform:translateY(-50%);
+  font-size:clamp(8rem,15vw,16rem);font-weight:700;letter-spacing:-0.04em;
+  color:rgba(0,48,135,0.04);line-height:1;pointer-events:none;white-space:nowrap;
+  font-family:'Montserrat',sans-serif;
+}
+.hero-inner{position:relative;z-index:1;}
+.hero-eyebrow{
+  font-size:0.68rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:2rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--accent);}
+.hero-h1{
+  font-size:clamp(2.6rem,5.5vw,4.4rem);font-weight:300;
+  letter-spacing:-0.02em;line-height:1.08;
+  color:var(--text);margin-bottom:0.3rem;
+}
+.hero-h1 em{font-style:normal;font-weight:600;color:var(--accent);}
+.hero-h1-sub{
+  font-size:clamp(2.6rem,5.5vw,4.4rem);font-weight:300;
+  letter-spacing:-0.02em;line-height:1.08;
+  color:var(--text3);margin-bottom:2.5rem;
+  font-family:'EB Garamond',serif;font-style:italic;
+}
+.hero-desc{
+  font-size:1rem;color:var(--text2);max-width:52ch;
+  line-height:1.85;margin-bottom:3rem;font-weight:300;
+}
+.hero-ctas{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:5rem;}
+.btn{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+  padding:0.85rem 2rem;border-radius:2px;cursor:pointer;
+  transition:all 0.22s;display:inline-block;text-decoration:none;
+}
+.btn-fill{background:var(--accent);color:#fff;border:1px solid var(--accent);}
+.btn-fill:hover{background:var(--accent2);border-color:var(--accent2);}
+.btn-ghost{background:transparent;color:var(--accent);border:1px solid var(--accent);}
+.btn-ghost:hover{background:var(--accent);color:#fff;}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--border);padding-top:3rem;gap:2rem;
+}
+.stat-n{font-size:2.2rem;font-weight:300;color:var(--text);letter-spacing:-0.02em;margin-bottom:0.2rem;}
+.stat-n sup{font-size:1rem;font-weight:600;color:var(--accent);}
+.stat-l{font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);}
+
+/* ── RESEARCH ── */
+.res-intro{max-width:640px;margin-bottom:4rem;}
+.res-list{display:flex;flex-direction:column;gap:0;}
+.res-item{
+  display:grid;grid-template-columns:80px 1fr;gap:2rem;
+  padding:2.5rem 0;border-bottom:1px solid var(--border);
+  cursor:pointer;transition:all 0.2s;
+  align-items:start;
+}
+.res-item:first-child{border-top:1px solid var(--border);}
+.res-item:hover .res-title{color:var(--accent);}
+.res-item:hover .res-arrow{transform:translateX(4px);color:var(--accent);}
+.res-num{font-size:0.7rem;font-weight:600;color:var(--text3);letter-spacing:0.1em;padding-top:0.3rem;}
+.res-body{}
+.res-title{font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:0.6rem;transition:color 0.2s;line-height:1.3;}
+.res-desc{font-size:0.87rem;color:var(--text2);line-height:1.8;max-width:58ch;}
+.res-arrow{margin-top:1rem;font-size:0.8rem;color:var(--text3);transition:all 0.2s;display:inline-block;}
+
+/* ── RESEARCH FULL ── */
+.res-full-item{padding:3rem 0;border-bottom:1px solid var(--border);}
+.res-full-item:first-child{border-top:1px solid var(--border);}
+.res-full-num{font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
+.res-full-title{font-size:1.35rem;font-weight:600;color:var(--text);margin-bottom:1.2rem;line-height:1.3;}
+.res-full-text{font-size:0.93rem;color:var(--text2);line-height:1.88;max-width:72ch;}
+
+/* ── PI ── */
+.pi-layout{display:grid;grid-template-columns:260px 1fr;gap:5rem;align-items:start;}
+.pi-photo{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(8%);}
+.pi-photo-placeholder{width:100%;aspect-ratio:3/4;background:var(--bg2);display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:2rem;}
+.pi-name{font-size:1.7rem;font-weight:300;letter-spacing:-0.01em;color:var(--text);margin-bottom:0.3rem;}
+.pi-role{font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.pi-affil{font-size:0.88rem;color:var(--text2);margin-bottom:0.4rem;}
+.pi-email a{font-size:0.88rem;color:var(--accent);text-decoration:none;}
+.pi-email a:hover{text-decoration:underline;}
+.pi-section{margin-top:2rem;}
+.pi-section-label{font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);margin-bottom:0.8rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+.pi-li{font-size:0.87rem;color:var(--text2);padding:0.5rem 0;border-bottom:1px solid var(--border);display:flex;gap:0.8rem;line-height:1.5;}
+.pi-li::before{content:'—';color:var(--accent);flex-shrink:0;}
+
+/* ── MEMBERS ── */
+.msec-title{font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);padding-bottom:0.8rem;border-bottom:2px solid var(--text);margin-bottom:1.5rem;margin-top:3rem;}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:1.5rem;margin-bottom:1rem;}
+.mcard{cursor:default;transition:all 0.25s;}
+.mcard:hover .mphoto{filter:grayscale(0%);}
+.mphoto{width:100%;aspect-ratio:1/1;object-fit:cover;filter:grayscale(25%);transition:filter 0.3s;display:block;}
+.mpholder{width:100%;aspect-ratio:1/1;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:600;color:var(--text3);font-family:'Montserrat',sans-serif;}
+.minfo{padding:0.8rem 0 0;}
+.mname{font-size:0.88rem;font-weight:600;color:var(--text);margin-bottom:0.15rem;}
+.mdeg{font-size:0.72rem;color:var(--accent);font-weight:500;margin-bottom:0.2rem;}
+.mbs{font-size:0.72rem;color:var(--text3);margin-bottom:0.3rem;}
+.mint{font-size:0.72rem;color:var(--text2);line-height:1.5;}
+
+.alumni-tbl{width:100%;border-collapse:collapse;margin-top:1.5rem;}
+.alumni-tbl th{font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--text3);text-align:left;padding:0.6rem 0.8rem;border-bottom:2px solid var(--text);}
+.alumni-tbl td{font-size:0.85rem;color:var(--text2);padding:0.7rem 0.8rem;border-bottom:1px solid var(--border);}
+.alumni-tbl td:first-child{color:var(--text);font-weight:500;}
+.alumni-tbl tr:hover td{background:var(--bg2);}
+
+/* ── PUBS ── */
+.pub-filter{display:flex;gap:0.5rem;margin-bottom:3rem;flex-wrap:wrap;}
+.pub-fbtn{
+  font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.5rem 1.2rem;border:1px solid var(--border);border-radius:2px;
+  cursor:pointer;transition:all 0.2s;background:none;color:var(--text2);
+}
+.pub-fbtn:hover,.pub-fbtn.on{background:var(--accent);color:#fff;border-color:var(--accent);}
+.pub-group-hd{
+  font-size:0.68rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--text3);padding:0.6rem 0;border-bottom:1px solid var(--border);
+  margin-bottom:0;border-top:2px solid var(--text);margin-top:2.5rem;
+}
+.pub-group-hd:first-of-type{margin-top:0;}
+.pub-row{
+  display:grid;grid-template-columns:40px 1fr;gap:1.2rem;
+  padding:1.2rem 0;border-bottom:1px solid var(--border);
+  align-items:start;
+}
+.pub-n{font-size:0.75rem;font-weight:600;color:var(--text3);padding-top:0.15rem;}
+.pub-t{font-size:0.9rem;font-weight:500;color:var(--text);line-height:1.55;margin-bottom:0.3rem;}
+.pub-a{font-size:0.78rem;color:var(--text2);line-height:1.6;margin-bottom:0.3rem;}
+.pub-j{font-size:0.78rem;font-style:italic;color:var(--accent);}
+.pub-meta{display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-top:0.3rem;}
+.pub-hl{font-size:0.63rem;font-weight:700;letter-spacing:0.08em;color:#b45309;background:#fef3c7;border:1px solid #fde68a;padding:0.15rem 0.55rem;border-radius:2px;}
+.pub-doi{font-size:0.68rem;font-weight:500;color:var(--accent);text-decoration:none;opacity:0.75;}
+.pub-doi:hover{opacity:1;text-decoration:underline;}
+
+/* ── NEWS ── */
+.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;margin-top:3rem;}
+.ncard{cursor:pointer;transition:all 0.25s;border:1px solid var(--border);}
+.ncard:hover{box-shadow:0 8px 32px rgba(0,48,135,0.08);transform:translateY(-2px);}
+.nimg{width:100%;height:220px;object-fit:cover;display:block;filter:grayscale(10%);transition:filter 0.3s;}
+.ncard:hover .nimg{filter:grayscale(0%);}
+.nbody{padding:1.5rem;}
+.ntag{font-size:0.63rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;display:block;}
+.ntitle{font-size:1rem;font-weight:600;color:var(--text);line-height:1.45;margin-bottom:0.6rem;}
+.ndate{font-size:0.75rem;color:var(--text3);}
+
+/* ── JOIN ── */
+.join-top{padding:2rem 0 4rem;max-width:700px;margin:0 auto;text-align:center;}
+.pos-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border);}
+.pos-item{display:flex;align-items:center;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid var(--border);}
+.pos-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+.pos-txt{font-size:0.95rem;color:var(--text2);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:4rem;}
+.ccard{background:var(--bg2);padding:2.5rem;}
+.clabel{font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.cval{font-size:0.92rem;color:var(--text2);line-height:1.9;}
+.cval a{color:var(--accent);text-decoration:none;}
+.cval a:hover{text-decoration:underline;}
+.map-box{margin-top:2px;height:340px;overflow:hidden;}
+.map-box iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(20%);}
+
+/* ── FEATURED PUB ── */
+.feat-pub{background:var(--text);color:#fff;padding:3rem;margin-top:0;}
+.feat-journal{font-size:0.65rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:1rem;display:block;}
+.feat-title{font-size:1.15rem;font-weight:500;line-height:1.55;color:#fff;margin-bottom:0.8rem;}
+.feat-auth{font-size:0.83rem;color:rgba(255,255,255,0.55);margin-bottom:1.5rem;}
+.feat-auth strong{color:rgba(255,255,255,0.8);}
+
+/* ── CONTACT STRIP ── */
+.cstrip{background:var(--accent);padding:4rem 0;}
+.cstrip-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;}
+.cstrip h3{font-size:1.5rem;font-weight:300;color:#fff;letter-spacing:-0.01em;}
+.cstrip p{font-size:0.88rem;color:rgba(255,255,255,0.65);margin-top:0.3rem;}
+
+
+/* ── NEWS POST ── */
+.npost-hero{width:100%;height:480px;object-fit:cover;display:block;filter:grayscale(5%);}
+.npost-back{font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);background:none;border:none;cursor:pointer;padding:0;margin-bottom:2.5rem;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s;}
+.npost-back:hover{color:var(--accent);}
+.npost-tag{font-size:0.63rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block;}
+.npost-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:300;line-height:1.2;color:var(--text);margin-bottom:1rem;letter-spacing:-0.01em;}
+.npost-meta{font-size:0.8rem;color:var(--text3);display:flex;align-items:center;gap:0.8rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border);}
+.npost-body{max-width:76ch;padding:3rem 0 2rem;}
+.npost-body p{font-size:0.97rem;color:var(--text2);line-height:1.9;margin-bottom:1.6rem;}
+.npost-gallery{display:grid;gap:1rem;margin:2rem 0;}
+.npost-gallery.cols2{grid-template-columns:1fr 1fr;}
+.npost-gallery.cols3{grid-template-columns:1fr 1fr 1fr;}
+.npost-gallery img{width:100%;object-fit:cover;display:block;aspect-ratio:4/3;filter:grayscale(5%);transition:filter 0.3s;}
+.npost-gallery img:hover{filter:grayscale(0%);}
+.npost-gallery img.portrait{aspect-ratio:3/4;}
+.npost-divider{height:1px;background:var(--border);margin:4rem 0 3rem;}
+.npost-related-label{font-size:0.65rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;display:block;}
+.npost-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
+@media(max-width:700px){
+  .npost-gallery.cols2,.npost-gallery.cols3{grid-template-columns:1fr;}
+  .npost-hero{height:280px;}
+}
+/* ── FOOTER ── */
+.footer{background:var(--text);padding:3rem 0;}
+.footer-inner{display:flex;justify-content:space-between;align-items:start;gap:3rem;flex-wrap:wrap;}
+.footer-logo-text{font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-bottom:0.4rem;}
+.footer-info{font-size:0.78rem;color:rgba(255,255,255,0.4);line-height:1.8;}
+.footer-links{display:flex;flex-wrap:wrap;gap:0.2rem;}
+.flink{font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);cursor:pointer;padding:0.3rem 0.7rem;border:none;background:none;transition:color 0.2s;}
+.flink:hover{color:#fff;}
+.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.25);margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);}
+
+/* ── ANIM ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fadeUp 0.65s ease both;}
+.fu2{animation:fadeUp 0.65s 0.12s ease both;}
+.fu3{animation:fadeUp 0.65s 0.24s ease both;}
+.fu4{animation:fadeUp 0.65s 0.36s ease both;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .pi-layout{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:700px){
+  .nav-links{display:none;}
+  .nav-inner{padding:0 1.5rem;}
+  .wrap{padding:0 1.5rem;}
+  .hero{padding:5rem 0 4rem;}
+  .sec{padding:4rem 0;}
+  .contact-grid{grid-template-columns:1fr;}
+  .cstrip-inner{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+const {useState,useEffect}=React;
+
+/* ─── DATA ─────────────────────────────────────────── */
+const RA=[
+  {n:"01",t:"Nanotechnology for Cell Signaling",
+   s:"Nanoscale tools that modulate signaling activity, gene expression, and cellular functions using physical stimuli — magnetic fields, light, and ultrasound.",
+   d:"We develop nanotechnology tools for manipulating signaling activity, gene expression, and function of specific cells at the nanoscale. Nanomaterials transduce physical modalities (light, magnetic field, ultrasound) into biologically relevant signals, enabling on-demand, targeted, and wireless delivery of signaling inputs to specific receptors at single-cell level both in vitro and in vivo."},
+  {n:"02",t:"Synthetic Biology for Pathway Engineering",
+   s:"Custom synthetic circuits that interrogate and control signaling networks, enabling selective activation or inhibition of cellular pathways.",
+   d:"We design and build custom-made signaling pathways to interrogate and control cell signaling. Synthetic signaling circuits employ artificial receptors and signaling molecules, rewired signaling pathways, or gene expression programs to selectively activate or inhibit specific signaling and modulate cellular responses with spatiotemporal precision."},
+  {n:"03",t:"Remote Control of Biological Systems",
+   s:"Magnetogenetic platforms for non-invasive modulation of neurons and immune cells — new approaches in neuroscience and immunotherapy.",
+   d:"We develop magnetogenetic platforms for non-invasive, wireless, cell-type-specific control of neurons and immune cells. Our work enables modulation of brain circuits and immune responses in vivo, opening new avenues for treating neurological disorders (e.g., Parkinson's disease), cancers, and immunological diseases."}
+];
+const PI={
+  name:"Minsuk Kwak, Ph.D.",
+  role:"Principal Investigator · Assistant Professor",
+  affil:"Advanced Science Institute, Yonsei University",
+  email:"minsuk.kwak@yonsei.ac.kr",
+  image:"https://static.wixstatic.com/media/3dd3e1_afa11abe253c4ee684ef7a8f01289dc6~mv2.png/v1/fill/w_410,h_545,al_c,q_85,enc_avif,quality_auto/3dd3e1_afa11abe253c4ee684ef7a8f01289dc6~mv2.png",
+  edu:["2020.9 – present  ·  Assistant Professor, Advanced Science Institute, Yonsei University","2017 – 2020  ·  Postdoctoral Fellow, UCSF (Young-wook Jun Lab)","2011 – 2016  ·  Ph.D. Biomedical Engineering, Yale University (Rong Fan Lab)","2007 – 2011  ·  B.S. Bioengineering, Rice University"],
+  awards:["2019  ·  Best Poster Award, ACS Publications & IBS Forum","2019  ·  Burroughs Wellcome Fund Collaborative Research Travel Award","2019  ·  Life Science Research Foundation (LSRF) Postdoctoral Fellowship","2018  ·  AACR Lymphoma Research Postdoctoral Fellowship","2015  ·  Edward L. Barlow Fellowship, Yale University","2011  ·  Allen International Scholarship (Full tuition, 4 years), Rice University"]
+};
+const PD=[
+  {name:"Wookjin Shin",title:"Research Professor",bs:"Chung-Ang U. (Chemistry)",phd:"Yonsei U. (Biotechnology)",int:"Magnetogenetics, Mechanobiology",img:"https://static.wixstatic.com/media/8a75a3_35fb8a8e20ee4c42a45896830cc0e917~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Seo-hyun Choi",title:"Post-Doc",bs:"Busan Nat'l U. (Biology)",phd:"Yonsei U. (Molecular Biology)",int:"Magnetogenetics for neuroscience",img:"https://static.wixstatic.com/media/8a75a3_e1b71a9be5064addb5d69fb904abb16d~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+];
+const GR=[
+  {name:"Kunwoo Noh",deg:"Ph.D.",bs:"Yonsei U. (Biotechnology)",int:"Immune cell engineering, Magnetogenetics",img:"https://static.wixstatic.com/media/8a75a3_e9eafed19e874edbb5662d8f596b6b85~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Yeongdo Lee",deg:"Ph.D.",bs:"Yonsei U. (Biotechnology)",int:"Magnetogenetic treatment of neurological diseases",img:"https://static.wixstatic.com/media/8a75a3_389d2544044c451d9a6cffcb59b51bed~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Somin Lee",deg:"Ph.D.",bs:"Yonsei U. (Chemistry & Material Eng.)",int:"Nanorobotics, Magnetic nanoparticle mechanobiology",img:"https://static.wixstatic.com/media/8a75a3_d03b2308d48b4660b0bcf68ee05209b5~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Hanho Joo",deg:"Ph.D.",bs:"Chung-Ang U. (Biomedical Eng.)",int:"Magnetic control of immune cells, Nano-bio interface",img:"https://static.wixstatic.com/media/8a75a3_b0fa12b3dc0f435492db429f9bd364b6~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Jin Lee",deg:"Ph.D.",bs:"Dongguk U. (Biotechnology)",int:"Cell engineering, Magnetogenetics",img:"https://static.wixstatic.com/media/8a75a3_61bda3c256584fea88ed95450aca7427~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Yubin Lee",deg:"Ph.D.",bs:"Yonsei U. (Bioconvergence)",int:"Magnetogenetics for neuroscience",img:"https://static.wixstatic.com/media/8a75a3_c09ec79baa0f4dfdbcb4d6f742968943~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Yerin Jang",deg:"Ph.D.",bs:"Yonsei U. (Bioconvergence)",int:"Magnetogenetics for neurological diseases",img:"https://static.wixstatic.com/media/8a75a3_a8fadd626d254e49a0191c5fa903bf66~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Jeongsoo Hong",deg:"Ph.D.",bs:"Sungkyunkwan U. (Biological Science)",int:"Magnetogenetic treatment of neurological diseases",img:"https://static.wixstatic.com/media/8a75a3_aa7b29b8108d477281afed4accd7faf4~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Ri Yu",deg:"Ph.D.",bs:"M.S. Sungkyunkwan U. (Chemistry)",int:"Brain-Gut axis, Neuroscience",img:"https://static.wixstatic.com/media/8a75a3_b0aa25f3514b489ba79bafba27968bfb~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Daeun Kang",deg:"M.Sc.",bs:"Incheon Nat'l U. (Molecular Biology)",int:"Synthetic biology, Immunotherapy, Magnetogenetics",img:"https://static.wixstatic.com/media/8a75a3_a53202f4049a4c8ca683f84eec4dd9f7~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Sebastian Solorzano",deg:"M.Sc.",bs:"Autonomous U. of Barcelona (Biotechnology)",int:"Novel magnetogenetic tools for neuromodulation",img:"https://static.wixstatic.com/media/8a75a3_8baec4860c224f9ebb1438ef0358ada2~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Seungyeon Ryu",deg:"M.Sc.",bs:"Yonsei U. (Systems Biology)",int:"Immunotherapy, Cell engineering",img:"https://static.wixstatic.com/media/8a75a3_493f87d3055c42fdb3aa682f1da340ba~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Yunseo Kim",deg:"M.Sc.",bs:"Yonsei U. (Nursing)",int:"Immune cell engineering",img:"https://static.wixstatic.com/media/8a75a3_054c3044526c4c4e86e1e8bcec93a686~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Yoona Koo",deg:"M.Sc.",bs:"Yonsei U. (Bioconvergence)",int:"Magnetogenetics for neurological diseases",img:"https://static.wixstatic.com/media/8a75a3_b4c912dd9ca64daaa23e5d6751a70d09~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+];
+const RS=[{name:"Jaegyeong Lee",deg:"Researcher",bs:"M.S. Yonsei U. (Molecular Biology)",int:"Cell-type specific magnetogenetics",img:"https://static.wixstatic.com/media/8a75a3_b295dec1a5a341c59bade6b08ffc87c6~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"}];
+const UG=[
+  {name:"Hyunmo Nam",deg:"Undergrad",bs:"Yonsei U. (Biotechnology)",int:"Cell Engineering, Gene therapy",img:"https://static.wixstatic.com/media/3dd3e1_77482ada137a44bbae77686b39777d09~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/3dd3e1_77482ada137a44bbae77686b39777d09~mv2.png"},
+  {name:"Juhye Baek",deg:"Undergrad",bs:"Yonsei U. (Chemical and Biomolecular Eng.)",int:"Immunotherapy, Cell Engineering",img:"https://static.wixstatic.com/media/8a75a3_9294656eb3e04497a81d334da17cb256~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+];
+const AL=[
+  {name:"YunMin Jung",period:"Post-doc (2021–2025)",pos:"Assistant Professor, U. of Ostrava, Faculty of Medicine"},
+  {name:"Jihye Shin",period:"M.S. (2023–2025)",pos:"Pharmaresearch, Medical Science Liaison"},
+  {name:"Jungmin Nam",period:"Undergrad (2020–2022)",pos:"Ph.D. student, Yale University"},
+  {name:"Hyunji Park",period:"Undergrad (2020–2021)",pos:"Ph.D. student, KAIST"},
+  {name:"Yuju Jun",period:"Undergrad (2020–2023)",pos:"Ph.D. student, U. of Wisconsin–Madison"},
+  {name:"Donghun Shin",period:"Undergrad (2021–2022)",pos:"Ph.D. student, U. of Michigan"},
+  {name:"Youbin Lee",period:"Undergrad (2021–2022)",pos:"Ph.D. student, Yonsei U."},
+  {name:"Jin Lee",period:"Undergrad (2021–2022)",pos:"Ph.D. student, Yonsei U."},
+  {name:"Jiwon Kim",period:"Undergrad (2021–2022)",pos:"SK Hynix"},
+];
+const PB={
+  yonsei:{label:"Yonsei University  ·  2021 – present",papers:[
+    {n:1,y:2026,t:"Cholesterol-DNA Origami Nanostructures for Synthetic Lipid Rafts Induce Early T Cell Activation Signals",a:"Yunmin Jung, Young-Joo Kim, Kunwoo Noh, Sunmi Lee, Minsuk Kwak*",j:"Advanced Materials Interfaces",doi:"10.1002/admi.202500806"},
+    {n:2,y:2025,t:"Electromagnetic interference-shielded graphene-copper neural interface for real-time electrophysiology under magnetic modulation",a:"Myoungjae Oh, Enji Kim, Seo-Hyun Choi, et al., Minsuk Kwak*, Jang-Ung Park*",j:"ACS Nano",doi:"10.1021/acsnano.5c15409"},
+    {n:3,y:2024,t:"In vivo magnetogenetics for cell-type specific targeting and modulation of brain circuits",a:"Seo-Hyun Choi, Chanhyun Park, et al., Minsuk Kwak*, Jinwoo Cheon*",j:"Nature Nanotechnology",doi:"10.1038/s41565-024-01694-2",hl:true},
+    {n:4,y:2024,t:"A magnetically-powered nanomachine with a DNA clutch",a:"Mouhong Lin, Jung-uk Lee, et al., Minsuk Kwak*, Dominik Lungerich*, Jinwoo Cheon*",j:"Nature Nanotechnology",doi:"10.1038/s41565-023-01599-6",hl:true},
+    {n:5,y:2024,t:"Nanoscale magneto-mechanical-genetics of deep brain neurons reversing motor deficits in Parkinsonian mice",a:"Wookjin Shin, Yeongdo Lee, et al., Minsuk Kwak*, Jinwoo Cheon*",j:"Nano Letters",doi:"10.1021/acs.nanolett.3c03899"},
+    {n:6,y:2023,t:"Hydrogel magnetomechanical actuator (h-MMA) nanoparticles for wireless remote control of mechanosignaling in vivo",a:"Sumin Jeong, Wookjin Shin, et al., Young-wook Jun*, Minsuk Kwak, Jinwoo Cheon*",j:"Nano Letters",doi:"10.1021/acs.nanolett.3c01207"},
+    {n:7,y:2023,t:"Magneto-acoustic protein nanostructures for non-invasive imaging of tissue mechanics in vivo",a:"Whee-soo Kim, Sungjin Min, et al., Minsuk Kwak*, Seung-Woo Cho*, Mikhail G. Shapiro*, Jinwoo Cheon*",j:"Nature Materials",doi:"10.1038/s41563-023-01688-w",hl:true},
+  ]},
+  ucsf:{label:"Post-doc @ UCSF  ·  2017 – 2020",papers:[
+    {n:1,y:2022,t:"Adherens junctions organize size-selective proteolytic hotspots critical for Notch signalling",a:"Kwak M#, Southard KM#, Kim WR, et al., Gartner Z*, Jun YW*",j:"Nature Cell Biology",doi:"10.1038/s41556-022-01031-6",hl:true},
+    {n:2,y:2019,t:"Lipopeptide-based nanosome-mediated delivery of hyperaccurate CRISPR/Cas9 ribonucleoprotein for gene editing",a:"Thach TT, Bae DH, Kim NH, et al., Kim YH*",j:"Small",doi:"10.1002/smll.201903172"},
+    {n:3,y:2019,t:"Small, clickable, and monovalent magnetofluorescent nanoparticles enable mechanogenetic regulation of receptors",a:"Kwak M#, Gu W#, et al., Cheon J*, Jun YW*",j:"Nano Letters",doi:"10.1021/acs.nanolett.9b00891"},
+  ]},
+  yale:{label:"Ph.D. @ Yale University  ·  2011 – 2016",papers:[
+    {n:1,y:2019,t:"Subclonal cooperation drives metastasis by modulating local and systemic immune microenvironments",a:"Janiszewska M, et al., Fan R, Michor F, McAllister SS, Polyak K*",j:"Nature Cell Biology",doi:"10.1038/s41556-019-0346-x",hl:true},
+    {n:2,y:2018,t:"Single-cell microRNA/mRNA co-sequencing reveals non-genetic heterogeneity and novel regulatory mechanisms",a:"Wang N, Zheng J, et al., Fan R, Lu J",j:"Nature Communications",doi:"10.1038/s41467-018-07981-6"},
+    {n:3,y:2017,t:"Immune escape in breast cancer during in situ to invasive carcinoma transition",a:"Huh SJ, et al., Fan R, Michor F, Polyak K",j:"Cancer Discovery",doi:"10.1158/2159-8290.CD-17-0222"},
+    {n:4,y:2017,t:"Novel synergistic IL-6 and IL-8 paracrine signaling pathway infers a strategy to inhibit tumor cell migration",a:"Jayatilaka H, et al., Fan R, Gilkes DM, Wirtz D",j:"Nature Communications",doi:"10.1038/ncomms15584"},
+    {n:5,y:2015,t:"Interfacing Inorganic Nanowire Arrays and Living Cells for Cellular Function Analysis",a:"Kwak M#, Han L#, Chen JJ, Fan R",j:"Small",doi:"10.1002/smll.201501236"},
+    {n:6,y:2015,t:"JAK-STAT pathway activation in malignant and nonmalignant cells contributes to MPN pathogenesis",a:"Kleppe M#, Kwak M#, et al., Fan R*, Levine RL*",j:"Cancer Discovery",doi:"10.1158/2159-8290.CD-14-0736"},
+    {n:7,y:2014,t:"Nanowire array chips for molecular typing of rare trafficking leukocytes",a:"Kwak M, Kim DJ, Lee MR, et al., Fan R",j:"Nanoscale",doi:"10.1039/c3nr06465d"},
+    {n:8,y:2013,t:"Single-cell protein secretomic signatures as potential correlates to tumor cell lineage evolution",a:"Kwak M, Mu L, Lu Y, et al., Fan R",j:"Frontiers in Oncology",doi:"10.3389/fonc.2013.00010"},
+    {n:9,y:2012,t:"Nanowire substrate-based laser scanning cytometry for quantitation of circulating tumor cells",a:"Lee SK, Kim GS, Wu Y, et al., Fan R",j:"Nano Letters",doi:"10.1021/nl2041707"},
+  ]}
+};
+const NW=[
+  {
+    date:"March 10, 2026",
+    title:"2026년 후기 나노바이오메디컬엔지니어링 대학원 과정 입학설명회 개최",
+    tag:"Announcement",
+    img:"https://static.wixstatic.com/media/3dd3e1_a0e8ee47335146049284ecf050f1b4aa~mv2.png/v1/fill/w_900,h_600,fp_0.50_0.50,q_95,enc_avif,quality_auto/3dd3e1_a0e8ee47335146049284ecf050f1b4aa~mv2.webp",
+    body:[],
+    photos:[]
+  },
+  {
+    date:"December 26, 2025",
+    title:"Happy Hour with Christmas & Year-End!",
+    tag:"Lab Life",
+    img:"https://static.wixstatic.com/media/3dd3e1_87513eebcb584a30add8fdf5a855c66a~mv2.jpg/v1/fill/w_900,h_506,fp_0.50_0.50,q_90,enc_avif,quality_auto/3dd3e1_87513eebcb584a30add8fdf5a855c66a~mv2.jpg",
+    body:[],
+    photos:[
+      "https://static.wixstatic.com/media/3dd3e1_a5db67f7ba6d4e97be3321d374431256~mv2.jpg/v1/fill/w_900,h_506,al_c,q_90,enc_avif,quality_auto/3dd3e1_a5db67f7ba6d4e97be3321d374431256~mv2.jpg",
+      "https://static.wixstatic.com/media/3dd3e1_4039c1fdf39649538dc659b53691d00b~mv2.jpg/v1/fill/w_900,h_600,al_c,q_90,enc_avif,quality_auto/3dd3e1_4039c1fdf39649538dc659b53691d00b~mv2.jpg",
+      "https://static.wixstatic.com/media/3dd3e1_39c675af54324223b52345a6f21ffedd~mv2.jpg/v1/fill/w_900,h_506,al_c,q_90,enc_avif,quality_auto/3dd3e1_39c675af54324223b52345a6f21ffedd~mv2.jpg",
+      "https://static.wixstatic.com/media/3dd3e1_07ba828629174cb0ad99d70c0385fd04~mv2.jpg/v1/fill/w_900,h_990,al_c,q_90,enc_avif,quality_auto/3dd3e1_07ba828629174cb0ad99d70c0385fd04~mv2.jpg"
+    ]
+  },
+  {
+    date:"August 16, 2025",
+    title:"2025 International Mammalian Synthetic Biology Workshop (mSBW)",
+    tag:"Conference",
+    img:"https://static.wixstatic.com/media/3dd3e1_e000a41021d74662846c24fd68461213~mv2.jpg/v1/fill/w_900,h_675,fp_0.50_0.50,q_90,enc_avif,quality_auto/3dd3e1_e000a41021d74662846c24fd68461213~mv2.jpg",
+    body:[],
+    photos:[
+      "https://static.wixstatic.com/media/3dd3e1_95e01d3a22f5475281837d24ffdf4bb6~mv2.jpg/v1/fill/w_900,h_675,al_c,q_90,enc_avif,quality_auto/3dd3e1_95e01d3a22f5475281837d24ffdf4bb6~mv2.jpg",
+      "https://static.wixstatic.com/media/3dd3e1_925d74fadd574ce88e30807e20ea9c93~mv2.jpg/v1/fill/w_900,h_675,al_c,q_90,enc_avif,quality_auto/3dd3e1_925d74fadd574ce88e30807e20ea9c93~mv2.jpg",
+      "https://static.wixstatic.com/media/3dd3e1_59525bf2f63b43a4af1bc2228000ab59~mv2.jpg/v1/fill/w_675,h_900,al_c,q_90,enc_avif,quality_auto/3dd3e1_59525bf2f63b43a4af1bc2228000ab59~mv2.jpg",
+      "https://static.wixstatic.com/media/3dd3e1_94e6ff46b31e467089e5b14f4af1db30~mv2.jpg/v1/fill/w_675,h_900,al_c,q_90,enc_avif,quality_auto/3dd3e1_94e6ff46b31e467089e5b14f4af1db30~mv2.jpg",
+      "https://static.wixstatic.com/media/3dd3e1_145f34a8fd3a47c585b07977b7270070~mv2.jpg/v1/fill/w_900,h_675,al_c,q_90,enc_avif,quality_auto/3dd3e1_145f34a8fd3a47c585b07977b7270070~mv2.jpg"
+    ]
+  },
+];
+
+/* ─── SMALL COMPONENTS ─────── */
+function MCard({m}){
+  const [e,sE]=useState(false);
+  const ini=m.name.split(" ").map(w=>w[0]).join("").slice(0,2);
+  return <div className="mcard">
+    {!e?<img src={m.img} alt={m.name} className="mphoto" onError={()=>sE(true)}/>:<div className="mpholder">{ini}</div>}
+    <div className="minfo">
+      <div className="mname">{m.name}</div>
+      {(m.deg||m.title)&&<div className="mdeg">{m.deg||m.title}</div>}
+      <div className="mbs">{m.bs||m.phd||""}</div>
+      <div className="mint">{m.int||""}</div>
+    </div>
+  </div>;
+}
+
+function Nav({pg,go}){
+  const ls=["home","research","members","publications","news","join"];
+  const lb=["Home","Research","Members","Publications","News","Join the Lab"];
+  return <nav className="nav">
+    <div className="nav-inner">
+      <button style={{background:"none",border:"none",cursor:"pointer",textAlign:"left",padding:0}} onClick={()=>go("home")}>
+        <div className="nav-logo-main">Kwak Laboratory</div>
+        <div className="nav-logo-sub">Yonsei University</div>
+      </button>
+      <div className="nav-links">
+        {ls.map((l,i)=><button key={l} className={"nl"+(pg===l?" act":"")} onClick={()=>go(l)}>{lb[i]}</button>)}
+      </div>
+    </div>
+  </nav>;
+}
+
+function Footer({go}){
+  return <footer className="footer"><div className="wrap">
+    <div className="footer-inner">
+      <div>
+        <div className="footer-logo-text">Kwak Laboratory</div>
+        <div className="footer-info">Receptor and Cell Signaling Engineering<br/>Advanced Science Institute, Yonsei University<br/>IBS Hall, 50 Yonsei-ro, Seodaemun-gu, Seoul 03722</div>
+      </div>
+      <div className="footer-links">
+        {["home","research","members","publications","news","join"].map(p=><button key={p} className="flink" onClick={()=>go(p)}>{p==="join"?"Join":p.charAt(0).toUpperCase()+p.slice(1)}</button>)}
+      </div>
+    </div>
+    <div className="footer-copy">© 2025 Kwak Laboratory · Yonsei University · All Rights Reserved</div>
+  </div></footer>;
+}
+
+/* ─── PAGES ──────────────────── */
+function Home({go}){
+  return <div className="pg">
+    {/* HERO */}
+    <section className="hero">
+      <div className="hero-bg-text">KWAK LAB</div>
+      <div className="wrap hero-inner">
+        <div className="hero-eyebrow fu">Yonsei University · Advanced Science Institute</div>
+        <h1 className="hero-h1 fu2">Receptor and <em>Cell Signaling</em></h1>
+        <div className="hero-h1-sub fu2">Engineering Laboratory</div>
+        <p className="hero-desc fu3">A multidisciplinary research group dedicated to understanding how cells sense and process environmental cues — and to engineering novel tools that manipulate cellular responses with precision.</p>
+        <div className="hero-ctas fu4">
+          <button className="btn btn-fill" onClick={()=>go("research")}>Explore Research</button>
+          <button className="btn btn-ghost" onClick={()=>go("join")}>Join the Lab</button>
+        </div>
+        <div className="hero-stats fu4">
+          <div><div className="stat-n">19<sup>+</sup></div><div className="stat-l">Publications</div></div>
+          <div><div className="stat-n">14<sup>+</sup></div><div className="stat-l">Lab Members</div></div>
+          <div><div className="stat-n">4</div><div className="stat-l">Nature / Nat. Nano</div></div>
+          <div><div className="stat-n">2020</div><div className="stat-l">Founded</div></div>
+        </div>
+      </div>
+    </section>
+
+    {/* RESEARCH OVERVIEW */}
+    <section className="sec">
+      <div className="wrap">
+        <div className="res-intro">
+          <span className="label">Research Overview</span>
+          <h2 className="h2">Integrating <strong>nanotechnology</strong>, synthetic biology, and mechanobiology to engineer cell signaling</h2>
+          <p className="body-text">We study how cells sense and process environmental cues, and develop novel tools that manipulate cellular responses with precision — from molecular mechanisms to biological systems.</p>
+        </div>
+        <div className="res-list">
+          {RA.map(r=><div key={r.n} className="res-item" onClick={()=>go("research")}>
+            <div className="res-num">{r.n}</div>
+            <div className="res-body">
+              <div className="res-title">{r.t}</div>
+              <div className="res-desc">{r.s}</div>
+              <span className="res-arrow">Learn more →</span>
+            </div>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    {/* FEATURED PUB */}
+    <div className="wrap"><div className="divider"/></div>
+    <section className="sec">
+      <div className="wrap">
+        <span className="label">Featured Publication</span>
+        <div className="feat-pub">
+          <span className="feat-journal">Nature Nanotechnology · 2024</span>
+          <div className="feat-title">In vivo magnetogenetics for cell-type specific targeting and modulation of brain circuits</div>
+          <div className="feat-auth">Seo-Hyun Choi, Chanhyun Park, et al., <strong>Minsuk Kwak*</strong>, Jinwoo Cheon*</div>
+          <a href="https://doi.org/10.1038/s41565-024-01694-2" target="_blank" className="btn btn-ghost" style={{borderColor:"rgba(255,255,255,0.4)",color:"#fff",fontSize:"0.68rem"}}>View Paper →</a>
+        </div>
+      </div>
+    </section>
+
+    {/* NEWS */}
+    <section className="sec sec-alt">
+      <div className="wrap">
+        <span className="label">Latest News</span>
+        <h2 className="h2">News & Events</h2>
+        <div className="news-grid">
+          {NW.map((n,i)=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
+            <img src={n.img} alt={n.title} className="nimg"/>
+            <div className="nbody">
+              <span className="ntag">{n.tag}</span>
+              <div className="ntitle">{n.title}</div>
+              <div className="ndate">{n.date}</div>
+            </div>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    {/* CTA */}
+    <div className="cstrip">
+      <div className="wrap">
+        <div className="cstrip-inner">
+          <div>
+            <h3>Interested in joining our lab?</h3>
+            <p>We welcome Postdoctoral Fellows, Graduate Students, and Undergraduate Researchers.</p>
+          </div>
+          <button className="btn" style={{background:"#fff",color:"var(--accent)",border:"none",flexShrink:0}} onClick={()=>go("join")}>Join the Lab →</button>
+        </div>
+      </div>
+    </div>
+  </div>;
+}
+
+function Research(){
+  return <div className="pg">
+    <section className="sec">
+      <div className="wrap">
+        <span className="label">Our Work</span>
+        <h2 className="h2">Research Areas</h2>
+        <p className="body-text" style={{marginBottom:"3rem"}}>Tools and technologies for studying how cells sense environment and make decisions — integrating nanotechnology, synthetic biology, and mechanobiology.</p>
+        <div>
+          {RA.map(r=><div key={r.n} className="res-full-item">
+            <div className="res-full-num">{r.n}</div>
+            <div className="res-full-title">{r.t}</div>
+            <div className="res-full-text">{r.d}</div>
+          </div>)}
+        </div>
+      </div>
+    </section>
+  </div>;
+}
+
+function Members(){
+  return <div className="pg">
+    <section className="sec">
+      <div className="wrap">
+        <span className="label">The Team</span>
+        <h2 className="h2">Lab Members</h2>
+        {/* PI */}
+        <div className="pi-layout" style={{marginTop:"3rem"}}>
+          <div>
+            <img src={PI.image} alt={PI.name} className="pi-photo" onError={e=>{e.target.style.display="none";}}/>
+          </div>
+          <div>
+            <div className="pi-name">{PI.name}</div>
+            <div className="pi-role">{PI.role}</div>
+            <div className="pi-affil">{PI.affil}</div>
+            <div className="pi-email" style={{marginBottom:"0.3rem"}}><a href={"mailto:"+PI.email}>{PI.email}</a></div>
+            <div className="pi-section">
+              <div className="pi-section-label">Education & Experience</div>
+              {PI.edu.map((e,i)=><div key={i} className="pi-li">{e}</div>)}
+            </div>
+            <div className="pi-section">
+              <div className="pi-section-label">Selected Honors & Awards</div>
+              {PI.awards.map((a,i)=><div key={i} className="pi-li">{a}</div>)}
+            </div>
+          </div>
+        </div>
+        {/* Postdoc */}
+        <div className="msec-title">Postdoctoral Researchers</div>
+        <div className="mgrid" style={{gridTemplateColumns:"repeat(auto-fill,minmax(210px,1fr))"}}>{PD.map(m=><MCard key={m.name} m={m}/>)}</div>
+        {/* Grad */}
+        <div className="msec-title">Graduate Students</div>
+        <div className="mgrid">{GR.map(m=><MCard key={m.name} m={m}/>)}</div>
+        {/* Researchers */}
+        <div className="msec-title">Researchers</div>
+        <div className="mgrid">{RS.map(m=><MCard key={m.name} m={m}/>)}</div>
+        {/* Undergrad */}
+        <div className="msec-title">Undergraduate Interns</div>
+        <div className="mgrid">{UG.map(m=><MCard key={m.name} m={m}/>)}</div>
+        {/* Alumni */}
+        <div className="msec-title">Alumni</div>
+        <table className="alumni-tbl">
+          <thead><tr><th>Name</th><th>Period & Role</th><th>Current Position</th></tr></thead>
+          <tbody>{AL.map(a=><tr key={a.name}><td>{a.name}</td><td>{a.period}</td><td>{a.pos}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </section>
+  </div>;
+}
+
+function Publications(){
+  const [f,sF]=useState("all");
+  return <div className="pg">
+    <section className="sec">
+      <div className="wrap">
+        <span className="label">Research Output</span>
+        <h2 className="h2">Publications</h2>
+        <p className="body-text" style={{marginBottom:"2.5rem"}}>* denotes corresponding author · # denotes co-first author</p>
+        <div className="pub-filter">
+          {["all","yonsei","ucsf","yale"].map(k=><button key={k} className={"pub-fbtn"+(f===k?" on":"")} onClick={()=>sF(k)}>
+            {k==="all"?"All":k==="yonsei"?"Yonsei (2021–)":k==="ucsf"?"UCSF (2017–20)":"Yale (2011–16)"}
+          </button>)}
+        </div>
+        {["yonsei","ucsf","yale"].filter(k=>f==="all"||f===k).map(key=><div key={key}>
+          <div className="pub-group-hd">{PB[key].label}</div>
+          {PB[key].papers.map(p=><div key={p.n} className="pub-row">
+            <div className="pub-n">{p.n}.</div>
+            <div>
+              <div className="pub-t">{p.t}</div>
+              <div className="pub-a">{p.a}</div>
+              <div className="pub-meta">
+                <span className="pub-j">{p.j} ({p.y})</span>
+                {p.hl&&<span className="pub-hl">★ High Impact</span>}
+                <a href={"https://doi.org/"+p.doi} target="_blank" className="pub-doi">DOI →</a>
+              </div>
+            </div>
+          </div>)}
+        </div>)}
+      </div>
+    </section>
+  </div>;
+}
+
+function News({go}){
+  return <div className="pg">
+    <section className="sec">
+      <div className="wrap">
+        <span className="label">Updates</span>
+        <h2 className="h2">News & Events</h2>
+        <div className="news-grid">
+          {NW.map((n,i)=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
+            <img src={n.img} alt={n.title} className="nimg"/>
+            <div className="nbody">
+              <span className="ntag">{n.tag}</span>
+              <div className="ntitle">{n.title}</div>
+              <div className="ndate">{n.date}</div>
+            </div>
+          </div>)}
+        </div>
+      </div>
+    </section>
+  </div>;
+}
+
+function Join(){
+  return <div className="pg">
+    <section className="sec">
+      <div className="wrap">
+        <div className="join-top">
+          <span className="label">We're Hiring</span>
+          <h2 className="h2" style={{margin:"0 auto 1.5rem"}}>Join the Lab</h2>
+          <p className="body-text" style={{margin:"0 auto",textAlign:"center"}}>We are always seeking highly motivated and collegial colleagues to work at the interface of nanoscience, synthetic biology, and cell biology — to investigate how cell signaling works and develop next-generation cellular therapeutics.</p>
+        </div>
+        <div style={{marginBottom:"3rem"}}>
+          <span className="label">Open Positions</span>
+          <div className="pos-list">
+            {["Postdoctoral Fellows","Graduate Students (Ph.D. & M.S.)","Undergraduate Researchers"].map(p=><div key={p} className="pos-item">
+              <div className="pos-dot"/>
+              <div className="pos-txt">{p}</div>
+            </div>)}
+          </div>
+          <p style={{marginTop:"2rem",fontSize:"0.92rem",color:"var(--text2)",lineHeight:1.8}}>
+            Please send your <strong>CV</strong> and a brief <strong>statement of interest</strong> to{" "}
+            <a href="mailto:minsuk.kwak@yonsei.ac.kr" style={{color:"var(--accent)",textDecoration:"none"}}>minsuk.kwak@yonsei.ac.kr</a>
+          </p>
+        </div>
+        <div className="contact-grid">
+          <div className="ccard">
+            <div className="clabel">Address</div>
+            <div className="cval">IBS Hall<br/>50 Yonsei-ro, Seodaemun-gu<br/>Seoul 03722, Republic of Korea</div>
+          </div>
+          <div className="ccard">
+            <div className="clabel">Contact</div>
+            <div className="cval">
+              <div>Email · <a href="mailto:minsuk.kwak@yonsei.ac.kr">minsuk.kwak@yonsei.ac.kr</a></div>
+              <div>Tel · +82-2-2123-4743</div>
+              <div>Fax · +82-2-2123-4606</div>
+            </div>
+          </div>
+          <div className="map-box" style={{gridColumn:"1/-1"}}>
+            <iframe title="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354!2d126.934!3d37.564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c98b9e9afce45%3A0xcbb1f18a44acd4ac!2sYonsei%20University!5e0!3m2!1sen!2skr!4v1700000000000!5m2!1sen!2skr" allowFullScreen loading="lazy"/>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>;
+}
+
+
+function NewsPost({post,go,allPosts,postIdx}){
+  const related=allPosts.filter((_,i)=>i!==postIdx).slice(0,2);
+  const photos=post.photos||[];
+  const allPhotos=[post.img,...photos];
+  const cols=allPhotos.length>=4?"cols2":allPhotos.length===3?"cols3":allPhotos.length===2?"cols2":"cols1";
+  return <div className="pg">
+    <section className="sec" style={{paddingTop:"5rem"}}>
+      <div className="wrap">
+        <button className="npost-back" onClick={()=>go("news")}>← Back to News</button>
+        <span className="npost-tag">{post.tag}</span>
+        <h1 className="npost-title">{post.title}</h1>
+        <div className="npost-meta">
+          <span>📅 {post.date}</span>
+          <span>· Kwak Laboratory, Yonsei University</span>
+        </div>
+        {/* 사진 갤러리 — 메인 이미지 포함 전체 */}
+        <div className={"npost-gallery "+cols} style={{marginTop:"2rem"}}>
+          {allPhotos.map((src,i)=><img key={i} src={src} alt={"photo "+(i+1)}/>)}
+        </div>
+        {/* 관련 게시물 */}
+        {related.length>0&&<>
+          <div className="npost-divider"/>
+          <span className="npost-related-label">More from the Lab</span>
+          <div className="npost-related-grid">
+            {related.map((n,i)=>{
+              const idx=allPosts.findIndex(x=>x.title===n.title);
+              return <div key={i} className="ncard" onClick={()=>go("newspost",idx)}>
+                <img src={n.img} alt={n.title} className="nimg"/>
+                <div className="nbody">
+                  <span className="ntag">{n.tag}</span>
+                  <div className="ntitle">{n.title}</div>
+                  <div className="ndate">{n.date}</div>
+                </div>
+              </div>;
+            })}
+          </div>
+        </>}
+      </div>
+    </section>
+  </div>;
+}
+
+/* ─── APP ──────── */
+function App(){
+  const [pg,sPg]=useState("home");
+  const [postIdx,sPostIdx]=useState(0);
+  const go=(p,idx)=>{
+    sPg(p);
+    if(idx!==undefined)sPostIdx(idx);
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
+  if(pg==="newspost"){
+    return <>
+      <Nav pg="news" go={go}/>
+      <NewsPost post={NW[postIdx]} go={go} allPosts={NW} postIdx={postIdx}/>
+      <Footer go={go}/>
+    </>;
+  }
+  const P={home:Home,research:Research,members:Members,publications:Publications,news:News,join:Join}[pg]||Home;
+  return <>
+    <Nav pg={pg} go={go}/>
+    <P go={go}/>
+    <Footer go={go}/>
+  </>;
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
