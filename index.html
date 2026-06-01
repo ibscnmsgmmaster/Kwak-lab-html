@@ -38,8 +38,8 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .nav-logo-sub{font-size:0.62rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);line-height:1;}
 .nav-links{display:flex;align-items:center;gap:0;}
 .nl{
-  font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
-  color:rgba(255,255,255,0.6);cursor:pointer;padding:0.5rem 1.1rem;
+  font-size:0.86rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  color:#ffffff;cursor:pointer;padding:0.5rem 1.1rem;
   border:none;background:none;
   position:relative;transition:color 0.2s;
 }
@@ -259,6 +259,26 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .pi-section-label{font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);margin-bottom:0.8rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
 .pi-li{font-size:0.87rem;color:var(--text2);padding:0.5rem 0;border-bottom:1px solid var(--border);display:flex;gap:0.8rem;line-height:1.5;}
 .pi-li::before{content:'—';color:var(--accent);flex-shrink:0;}
+
+/* ── NAV DROPDOWN ── */
+.nl-drop{position:relative;display:inline-block;}
+.nl-menu{
+  position:absolute;top:100%;left:0;min-width:215px;
+  background:rgba(2,5,20,0.98);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.10);border-top:none;
+  display:flex;flex-direction:column;padding:0.4rem 0;
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity 0.2s,transform 0.2s,visibility 0.2s;
+  z-index:210;
+}
+.nl-drop:hover .nl-menu{opacity:1;visibility:visible;transform:translateY(0);}
+.nl-mi{
+  font-size:0.78rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;
+  color:rgba(255,255,255,0.78);background:none;border:none;cursor:pointer;
+  text-align:left;padding:0.8rem 1.4rem;transition:all 0.18s;white-space:nowrap;
+}
+.nl-mi:hover{color:#fff;background:rgba(79,163,255,0.16);}
+.nl-mi.on{color:#4fa3ff;}
 
 /* ── MEMBERS ── */
 .msec-title{font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);padding-bottom:0.8rem;border-bottom:2px solid var(--text);margin-bottom:1.5rem;margin-top:3rem;}
@@ -545,6 +565,7 @@ const NW=[
     date:"March 10, 2026",
     title:"2026년 후기 나노바이오메디컬엔지니어링 대학원 과정 입학설명회 개최",
     tag:"Announcement",
+    board:"news",
     img:"images/image1.jpg",
     body:[],
     photos:[
@@ -556,6 +577,7 @@ const NW=[
     date:"December 26, 2025",
     title:"Happy Hour with Christmas & Year-End!",
     tag:"Lab Life",
+    board:"gallery",
     img:"https://static.wixstatic.com/media/3dd3e1_87513eebcb584a30add8fdf5a855c66a~mv2.jpg/v1/fill/w_900,h_506,fp_0.50_0.50,q_90,enc_avif,quality_auto/3dd3e1_87513eebcb584a30add8fdf5a855c66a~mv2.jpg",
     body:[],
     photos:[
@@ -569,6 +591,7 @@ const NW=[
     date:"August 16, 2025",
     title:"2025 International Mammalian Synthetic Biology Workshop (mSBW)",
     tag:"Conference",
+    board:"gallery",
     img:"https://static.wixstatic.com/media/3dd3e1_e000a41021d74662846c24fd68461213~mv2.jpg/v1/fill/w_900,h_675,fp_0.50_0.50,q_90,enc_avif,quality_auto/3dd3e1_e000a41021d74662846c24fd68461213~mv2.jpg",
     body:[],
     photos:[
@@ -597,19 +620,36 @@ function MCard({m}){
 }
 
 function Nav({pg,go}){
-  const ls=["home","research","members","publications","news","join"];
-  const lb=["Home","Research","Members","Publications","News","Join the Lab"];
+  const onTeam=(pg==="pi"||pg==="members");
+  const onBoards=(pg==="news"||pg==="gallery");
   return <nav className="nav">
     <div className="nav-inner">
       <button style={{background:"none",border:"none",cursor:"pointer",textAlign:"left",padding:0,display:"flex",alignItems:"center",gap:"0.75rem"}} onClick={()=>go("home")}>
-        <img src="images/image4.jpg" alt="Yonsei University" style={{height:"38px",width:"auto",objectFit:"contain"}} style={{width:"52px",height:"52px",objectFit:"contain"}}/>
+        <img src="images/image4.jpg" alt="Yonsei University" style={{width:"52px",height:"52px",objectFit:"contain"}}/>
         <div>
           <div className="nav-logo-main">Kwak Laboratory</div>
           <div className="nav-logo-sub">Yonsei University</div>
         </div>
       </button>
       <div className="nav-links">
-        {ls.map((l,i)=><button key={l} className={"nl"+(pg===l?" act":"")} onClick={()=>go(l)}>{lb[i]}</button>)}
+        <button className={"nl"+(pg==="home"?" act":"")} onClick={()=>go("home")}>Home</button>
+        <button className={"nl"+(pg==="research"?" act":"")} onClick={()=>go("research")}>Research</button>
+        <div className="nl-drop">
+          <button className={"nl"+(onTeam?" act":"")} onClick={()=>go("pi")}>Team</button>
+          <div className="nl-menu">
+            <button className={"nl-mi"+(pg==="pi"?" on":"")} onClick={()=>go("pi")}>Principal Investigator</button>
+            <button className={"nl-mi"+(pg==="members"?" on":"")} onClick={()=>go("members")}>Members</button>
+          </div>
+        </div>
+        <button className={"nl"+(pg==="publications"?" act":"")} onClick={()=>go("publications")}>Publications</button>
+        <div className="nl-drop">
+          <button className={"nl"+(onBoards?" act":"")} onClick={()=>go("news")}>Boards</button>
+          <div className="nl-menu">
+            <button className={"nl-mi"+(pg==="news"?" on":"")} onClick={()=>go("news")}>News</button>
+            <button className={"nl-mi"+(pg==="gallery"?" on":"")} onClick={()=>go("gallery")}>Gallery</button>
+          </div>
+        </div>
+        <button className={"nl"+(pg==="join"?" act":"")} onClick={()=>go("join")}>Join the Lab</button>
       </div>
     </div>
   </nav>;
@@ -623,7 +663,7 @@ function Footer({go}){
         <div className="footer-info">Receptor and Cell Signaling Engineering<br/>Advanced Science Institute, Yonsei University<br/>IBS Hall, 50 Yonsei-ro, Seodaemun-gu, Seoul 03722</div>
       </div>
       <div className="footer-links">
-        {["home","research","members","publications","news","join"].map(p=><button key={p} className="flink" onClick={()=>go(p)}>{p==="join"?"Join":p.charAt(0).toUpperCase()+p.slice(1)}</button>)}
+        {["home","research","members","publications","news","gallery","join"].map(p=><button key={p} className="flink" onClick={()=>go(p)}>{p==="join"?"Join":p==="members"?"Team":p.charAt(0).toUpperCase()+p.slice(1)}</button>)}
       </div>
     </div>
     <div className="footer-copy">© 2025 Kwak Laboratory · Yonsei University · All Rights Reserved</div>
@@ -647,40 +687,23 @@ function Home({go}){
         <p className="hero-desc fu3">A multidisciplinary research group dedicated to understanding how cells sense and process environmental cues — and to engineering novel tools that manipulate cellular responses with precision.</p>
         <div className="hero-ctas fu4">
           <button className="btn btn-fill" onClick={()=>go("research")}>Explore Research</button>
-          <button className="btn btn-ghost" onClick={()=>go("join")}>Join the Lab</button>
-        </div>
-        <div className="hero-stats fu4">
-          <div><div className="stat-n">19<sup>+</sup></div><div className="stat-l">Publications</div></div>
-          <div><div className="stat-n">14<sup>+</sup></div><div className="stat-l">Lab Members</div></div>
-          <div><div className="stat-n">4</div><div className="stat-l">Nature / Nat. Nano</div></div>
-          <div><div className="stat-n">2020</div><div className="stat-l">Founded</div></div>
         </div>
       </div>
       <div className="hero-scroll"><div className="hero-scroll-line"/><span>scroll</span></div>
     </section>
 
-    {/* RESEARCH OVERVIEW */}
-    <section className="sec">
+    {/* CTA — Interested in joining */}
+    <div className="cstrip">
       <div className="wrap">
-        <div className="res-intro">
-          <span className="label">Research Overview</span>
-          <h2 className="h2" style={{maxWidth:"none"}}>Integrating <strong>nanotechnology</strong>,<br/><strong>synthetic biology</strong>, and <strong>mechanobiology</strong><br/>to engineer cell signaling</h2>
-          <p className="body-text">We study how cells sense and process environmental cues, and develop novel tools that manipulate cellular responses with precision.</p>
-        </div>
-        <div className="res-cards">
-          {RA.map(r=><div key={r.n} className="res-card-full" onClick={()=>go("research")}>
-            {r.imgs&&r.imgs[0]&&(
-              <img src={r.imgs[0]} alt={r.t} className="res-card-img"/>
-            )}
-            <div className="res-card-body">
-              <div className="res-full-num">{r.n}</div>
-              <div className="res-full-title">{r.t}</div>
-              <div className="res-full-text">{r.s}</div>
-            </div>
-          </div>)}
+        <div className="cstrip-inner">
+          <div>
+            <h3>Interested in joining our lab?</h3>
+            <p>We welcome Postdoctoral Fellows, Graduate Students, and Undergraduate Researchers.</p>
+          </div>
+          <button className="btn" style={{background:"#fff",color:"var(--accent)",border:"none",flexShrink:0}} onClick={()=>go("join")}>Join the Lab →</button>
         </div>
       </div>
-    </section>
+    </div>
 
     {/* FEATURED PUBLICATIONS */}
     <section className="sec sec-alt">
@@ -742,19 +765,6 @@ function Home({go}){
         </div>
       </div>
     </section>
-
-    {/* CTA */}
-    <div className="cstrip">
-      <div className="wrap">
-        <div className="cstrip-inner">
-          <div>
-            <h3>Interested in joining our lab?</h3>
-            <p>We welcome Postdoctoral Fellows, Graduate Students, and Undergraduate Researchers.</p>
-          </div>
-          <button className="btn" style={{background:"#fff",color:"var(--accent)",border:"none",flexShrink:0}} onClick={()=>go("join")}>Join the Lab →</button>
-        </div>
-      </div>
-    </div>
   </div>;
 }
 
@@ -787,13 +797,12 @@ function Research(){
   </div>;
 }
 
-function Members(){
+function PIPage(){
   return <div className="pg">
     <section className="sec">
       <div className="wrap">
         <span className="label">The Team</span>
-        <h2 className="h2">Lab Members</h2>
-        {/* PI */}
+        <h2 className="h2">Principal Investigator</h2>
         <div className="pi-layout" style={{marginTop:"3rem"}}>
           <div>
             <img src={PI.image} alt={PI.name} className="pi-photo" onError={e=>{e.target.style.display="none";}}/>
@@ -813,8 +822,19 @@ function Members(){
             </div>
           </div>
         </div>
+      </div>
+    </section>
+  </div>;
+}
+
+function Members(){
+  return <div className="pg">
+    <section className="sec">
+      <div className="wrap">
+        <span className="label">The Team</span>
+        <h2 className="h2">Members</h2>
         {/* Postdoc */}
-        <div className="msec-title">Postdoctoral Researchers</div>
+        <div className="msec-title" style={{marginTop:"3rem"}}>Postdoctoral Researchers</div>
         <div className="mgrid" style={{gridTemplateColumns:"repeat(auto-fill,minmax(210px,1fr))"}}>{PD.map(m=><MCard key={m.name} m={m}/>)}</div>
         {/* Grad */}
         <div className="msec-title">Graduate Students</div>
@@ -870,13 +890,36 @@ function Publications(){
 }
 
 function News({go}){
+  const items=NW.map((n,i)=>({n,i})).filter(x=>x.n.board==="news");
   return <div className="pg">
     <section className="sec">
       <div className="wrap">
         <span className="label">Updates</span>
-        <h2 className="h2">News & Events</h2>
+        <h2 className="h2">News &amp; Events</h2>
         <div className="news-grid">
-          {NW.map((n,i)=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
+          {items.map(({n,i})=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
+            <img src={n.img} alt={n.title} className="nimg"/>
+            <div className="nbody">
+              <span className="ntag">{n.tag}</span>
+              <div className="ntitle">{n.title}</div>
+              <div className="ndate">{n.date}</div>
+            </div>
+          </div>)}
+        </div>
+      </div>
+    </section>
+  </div>;
+}
+
+function Gallery({go}){
+  const items=NW.map((n,i)=>({n,i})).filter(x=>x.n.board==="gallery");
+  return <div className="pg">
+    <section className="sec">
+      <div className="wrap">
+        <span className="label">Photos</span>
+        <h2 className="h2">Gallery</h2>
+        <div className="news-grid">
+          {items.map(({n,i})=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
             <img src={n.img} alt={n.title} className="nimg"/>
             <div className="nbody">
               <span className="ntag">{n.tag}</span>
@@ -936,7 +979,7 @@ function Join(){
 
 
 function NewsPost({post,go,allPosts,postIdx}){
-  const related=allPosts.filter((_,i)=>i!==postIdx).slice(0,2);
+  const related=allPosts.filter((p,i)=>i!==postIdx&&p.board===post.board).slice(0,2);
   const photos=post.photos||[];
   const allPhotos=[post.img,...photos];
   return <div className="pg">
@@ -985,13 +1028,14 @@ function App(){
     window.scrollTo({top:0,behavior:"smooth"});
   };
   if(pg==="newspost"){
+    const board=(NW[postIdx]&&NW[postIdx].board)||"news";
     return <>
-      <Nav pg="news" go={go}/>
+      <Nav pg={board} go={go}/>
       <NewsPost post={NW[postIdx]} go={go} allPosts={NW} postIdx={postIdx}/>
       <Footer go={go}/>
     </>;
   }
-  const P={home:Home,research:Research,members:Members,publications:Publications,news:News,join:Join}[pg]||Home;
+  const P={home:Home,research:Research,pi:PIPage,members:Members,publications:Publications,news:News,gallery:Gallery,join:Join}[pg]||Home;
   return <>
     <Nav pg={pg} go={go}/>
     <P go={go}/>
