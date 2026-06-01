@@ -74,7 +74,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   position:relative;
   overflow:hidden;
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   border-bottom:none;
 }
 /* Animated grid background */
@@ -116,7 +116,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 }
 .hero-inner{
   position:relative;z-index:2;
-  padding:3.5rem 0 4.5rem;
+  padding:clamp(4.5rem,11vh,9rem) 0 4.5rem;
   width:100%;
 }
 .hero-eyebrow{
@@ -698,7 +698,7 @@ function Home({go}){
         <div className="cstrip-inner">
           <div>
             <h3>Interested in joining our lab?</h3>
-            <p>We welcome Postdoctoral Fellows, Graduate Students, and Undergraduate Researchers.</p>
+            <p>We welcome prospective postdoctoral, graduate, and undergraduate researchers. Feel free to reach out to Prof. Minsuk Kwak at <a href="mailto:minsuk.kwak@yonsei.ac.kr" style={{color:"#fff",textDecoration:"underline"}}>minsuk.kwak@yonsei.ac.kr</a>.</p>
           </div>
           <button className="btn" style={{background:"#fff",color:"var(--accent)",border:"none",flexShrink:0}} onClick={()=>go("join")}>Join the Lab →</button>
         </div>
