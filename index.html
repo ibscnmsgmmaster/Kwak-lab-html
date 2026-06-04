@@ -69,7 +69,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 
 /* ── HERO ── */
 .hero{
-  height:100vh;
+  min-height:calc(100vh - var(--nav-h) - 6.5rem);
   background:#03071e;
   position:relative;
   overflow:hidden;
@@ -116,7 +116,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 }
 .hero-inner{
   position:relative;z-index:2;
-  padding:clamp(4.5rem,11vh,9rem) 0 4.5rem;
+  padding:clamp(2.5rem,6vh,4.5rem) 0 3.5rem;
   width:100%;
 }
 .hero-eyebrow{
@@ -361,7 +361,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .feat-auth strong{color:rgba(255,255,255,0.8);}
 
 /* ── CONTACT STRIP ── */
-.cstrip{background:var(--accent);padding:4rem 0;}
+.cstrip{background:var(--accent);padding:1.4rem 0;}
 .cstrip-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;}
 .cstrip h3{font-size:1.5rem;font-weight:300;color:#fff;letter-spacing:-0.01em;}
 .cstrip p{font-size:0.88rem;color:rgba(255,255,255,0.65);margin-top:0.3rem;}
@@ -698,7 +698,7 @@ function Home({go}){
         <div className="cstrip-inner">
           <div>
             <h3>Interested in joining our lab?</h3>
-            <p>We welcome prospective postdoctoral, graduate, and undergraduate researchers. Feel free to reach out to Prof. Minsuk Kwak at <a href="mailto:minsuk.kwak@yonsei.ac.kr" style={{color:"#fff",textDecoration:"underline"}}>minsuk.kwak@yonsei.ac.kr</a>.</p>
+            <p>Feel free to reach out to Prof. Minsuk Kwak at <a href="mailto:minsuk.kwak@yonsei.ac.kr" style={{color:"#fff",textDecoration:"underline"}}>minsuk.kwak@yonsei.ac.kr</a>.</p>
           </div>
           <button className="btn" style={{background:"#fff",color:"var(--accent)",border:"none",flexShrink:0}} onClick={()=>go("join")}>Join the Lab →</button>
         </div>
