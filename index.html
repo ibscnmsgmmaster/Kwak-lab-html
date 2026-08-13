@@ -372,6 +372,16 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .res-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.8rem;align-items:start;}
 .res-img-grid img{width:100%;height:auto;display:block;filter:grayscale(8%);transition:filter 0.3s;}
 .res-img-grid img:hover{filter:grayscale(0%);}
+.res-hero-img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;border-radius:14px;margin:0.4rem 0 2rem;border:1px solid var(--border);box-shadow:0 12px 34px rgba(0,48,135,0.12),0 2px 8px rgba(0,0,0,0.06);}
+.res-papers{margin-top:2.2rem;padding-top:1.6rem;border-top:1px solid var(--border);max-width:68ch;}
+.res-papers-label{font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);margin-bottom:0.8rem;}
+.res-paper{display:flex;flex-direction:column;gap:0.3rem;padding:0.8rem 0;border-bottom:1px solid var(--border);text-decoration:none;transition:padding-left 0.2s;}
+.res-paper:last-child{border-bottom:none;}
+.res-paper:hover{padding-left:0.4rem;}
+.res-paper-t{font-size:0.83rem;font-weight:500;color:var(--text);line-height:1.5;}
+.res-paper:hover .res-paper-t{color:var(--accent);}
+.res-paper-meta{display:flex;align-items:center;gap:0.7rem;font-size:0.7rem;color:var(--text3);letter-spacing:0.02em;}
+.res-paper-doi{font-weight:600;color:var(--accent);letter-spacing:0.06em;opacity:0.85;white-space:nowrap;}
 .res-img-single{margin-top:1.8rem;}
 .res-img-single img{width:100%;height:auto;display:block;filter:grayscale(8%);transition:filter 0.3s;}
 .res-img-single img:hover{filter:grayscale(0%);}
@@ -467,26 +477,31 @@ const {useState,useEffect}=React;
 
 /* ─── DATA ─────────────────────────────────────────── */
 const RA=[
-  {n:"01",t:"Nanotechnology for Cell Signaling",
-   s:"Nanoscale tools that modulate signaling activity, gene expression, and cellular functions using physical stimuli — magnetic fields, light, and ultrasound.",
-   d:"We develop nanotechnology tools for manipulating signaling activity, gene expression, and function of specific cells at the nanoscale. Nanomaterials transduce physical modalities (light, magnetic field, ultrasound) into biologically relevant signals, enabling on-demand, targeted, and wireless delivery of signaling inputs to specific receptors at single-cell level both in vitro and in vivo.",
-   imgs:[
-     "https://static.wixstatic.com/media/3dd3e1_c2a8043d40f1469088309ebd78e078be~mv2.png/v1/fill/w_900,h_477,al_c,q_85,enc_avif,quality_auto/3dd3e1_c2a8043d40f1469088309ebd78e078be~mv2.png",
-     "https://static.wixstatic.com/media/3dd3e1_f71e36a3c3dc47419ad01c3f013b344d~mv2.png/v1/fill/w_900,h_336,al_c,q_85,enc_avif,quality_auto/3dd3e1_f71e36a3c3dc47419ad01c3f013b344d~mv2.png"
+  {n:"01",t:"Nano & Synthetic Tools for Signaling Control",
+   s:"The toolbox — magnetic nanoparticles, DNA nanomachines, and synthetic receptors that convert physical energy into precise signaling inputs.",
+   d:"We build the tools that make cell signaling controllable. Magnetic nanoparticles, DNA-based nanomachines, and synthetic receptors and circuits transduce physical modalities \u2014 magnetic fields, mechanical force, light, and ultrasound \u2014 into biologically defined signaling inputs. These platforms deliver on-demand, targeted, and wireless control to specific receptors at single-molecule and single-cell resolution, both in vitro and in vivo.",
+   img:"images/Nanoparticle_ion_channel_gating.png",
+   papers:[
+     {t:"A magnetically-powered nanomachine with a DNA clutch",j:"Nature Nanotechnology \u00b7 2024",doi:"10.1038/s41565-023-01599-6"},
+     {t:"Small, clickable, and monovalent magnetofluorescent nanoparticles enable mechanogenetic regulation of receptors",j:"Nano Letters \u00b7 2019",doi:"10.1021/acs.nanolett.9b00891"},
+     {t:"Hydrogel magnetomechanical actuator (h-MMA) nanoparticles for wireless remote control of mechanosignaling in vivo",j:"Nano Letters \u00b7 2023",doi:"10.1021/acs.nanolett.3c01207"}
    ]},
-  {n:"02",t:"Synthetic Biology for Pathway Engineering",
-   s:"Custom synthetic circuits that interrogate and control signaling networks, enabling selective activation or inhibition of cellular pathways.",
-   d:"We design and build custom-made signaling pathways to interrogate and control cell signaling. Synthetic signaling circuits employ artificial receptors and signaling molecules, rewired signaling pathways, or gene expression programs to selectively activate or inhibit specific signaling and modulate cellular responses with spatiotemporal precision.",
-   imgs:[
-     "https://static.wixstatic.com/media/3dd3e1_8284379a8b7640bdaf4a4375a90672cc~mv2.png/v1/fill/w_900,h_596,al_c,q_85,enc_avif,quality_auto/3dd3e1_8284379a8b7640bdaf4a4375a90672cc~mv2.png",
-     "https://static.wixstatic.com/media/3dd3e1_fa039797c775418c8555257b7295e555~mv2.png/v1/fill/w_900,h_291,al_c,q_85,enc_avif,quality_auto/3dd3e1_fa039797c775418c8555257b7295e555~mv2.png"
+  {n:"02",t:"Remote Control of the Brain",
+   s:"Magnetogenetic platforms that wirelessly modulate specific brain circuits in vivo \u2014 a non-invasive route to treating neurological disease.",
+   d:"We develop magnetogenetic platforms for non-invasive, wireless, cell-type-specific control of neurons in the living brain. By converting magnetic fields into targeted signaling at defined neural populations, our tools modulate brain circuits in vivo \u2014 reversing motor deficits in Parkinsonian models and opening new therapeutic avenues for neurological disorders.",
+   img:"images/Brain_magnetic_field_neuron_activation.png",
+   papers:[
+     {t:"In vivo magnetogenetics for cell-type specific targeting and modulation of brain circuits",j:"Nature Nanotechnology \u00b7 2024",doi:"10.1038/s41565-024-01694-2"},
+     {t:"Nanoscale magneto-mechanical-genetics of deep brain neurons reversing motor deficits in Parkinsonian mice",j:"Nano Letters \u00b7 2024",doi:"10.1021/acs.nanolett.3c03899"},
+     {t:"Electromagnetic interference-shielded graphene-copper neural interface for real-time electrophysiology under magnetic modulation",j:"ACS Nano \u00b7 2025",doi:"10.1021/acsnano.5c15409"}
    ]},
-  {n:"03",t:"Remote Control of Biological Systems",
-   s:"Magnetogenetic platforms for non-invasive modulation of neurons and immune cells — new approaches in neuroscience and immunotherapy.",
-   d:"We develop magnetogenetic platforms for non-invasive, wireless, cell-type-specific control of neurons and immune cells. Our work enables modulation of brain circuits and immune responses in vivo, opening new avenues for treating neurological disorders (e.g., Parkinson's disease), cancers, and immunological diseases.",
-   imgs:[
-     "https://static.wixstatic.com/media/3dd3e1_8e1e94de13f8445cb7f2c2f297fe731b~mv2.png/v1/fill/w_900,h_512,al_c,q_85,enc_avif,quality_auto/3dd3e1_8e1e94de13f8445cb7f2c2f297fe731b~mv2.png",
-     "https://static.wixstatic.com/media/3dd3e1_8b98e1cf9bd54d1a96013c226462aa09~mv2.png/v1/fill/w_900,h_507,al_c,q_85,enc_avif,quality_auto/3dd3e1_8b98e1cf9bd54d1a96013c226462aa09~mv2.png"
+  {n:"03",t:"Engineering Immunity",
+   s:"Synthetic and magnetic control of immune cells \u2014 engineering activation from the receptor up toward next-generation cellular therapeutics.",
+   d:"We engineer the signaling machinery of immune cells to build next-generation cellular therapeutics. Using synthetic membrane nanostructures and receptor-level engineering, we control how immune cells sense and respond \u2014 from the organization of early T-cell activation signals to the mechanics of receptor proteolysis \u2014 with the precision needed for targeted immunotherapy.",
+   img:"images/T_cell_-_Target_cell_docking.png",
+   papers:[
+     {t:"Cholesterol-DNA origami nanostructures for synthetic lipid rafts induce early T cell activation signals",j:"Advanced Materials Interfaces \u00b7 2026",doi:"10.1002/admi.202500806"},
+     {t:"Adherens junctions organize size-selective proteolytic hotspots critical for Notch signalling",j:"Nature Cell Biology \u00b7 2022",doi:"10.1038/s41556-022-01031-6"}
    ]}
 ]
 const PI={
@@ -775,17 +790,24 @@ function Research(){
       <div className="wrap">
         <span className="label">Our Work</span>
         <h2 className="h2">Research Areas</h2>
-        <p className="body-text" style={{marginBottom:"3rem"}}>Tools and technologies for studying how cells sense environment and make decisions — integrating nanotechnology, synthetic biology, and mechanobiology.</p>
+        <p className="body-text" style={{marginBottom:"3rem"}}>We build nanoscale and synthetic tools that convert physical energy into precise signaling inputs — then apply them to wirelessly control the brain and engineer immunity in living systems.</p>
         <div className="res-list">
           {RA.map(r=><div key={r.n} className="res-full-item">
             <div style={{display:"grid",gridTemplateColumns:"80px 1fr",gap:"2rem",alignItems:"start"}}>
               <div className="res-full-num">{r.n}</div>
               <div>
                 <div className="res-full-title">{r.t}</div>
+                {r.img&&(
+                  <img className="res-hero-img" src={r.img} alt={r.t} loading="lazy" onError={e=>{e.target.style.display="none";}}/>
+                )}
                 <div className="res-full-text">{r.d}</div>
-                {r.imgs&&r.imgs.length>0&&(
-                  <div className="res-img-grid" style={{marginTop:"2rem"}}>
-                    {r.imgs.map((src,i)=><img key={i} src={src} alt={r.t+" "+(i+1)}/>)}
+                {r.papers&&r.papers.length>0&&(
+                  <div className="res-papers">
+                    <div className="res-papers-label">Key Publications</div>
+                    {r.papers.map((p,i)=><a key={i} className="res-paper" href={"https://doi.org/"+p.doi} target="_blank" rel="noopener noreferrer">
+                      <span className="res-paper-t">{p.t}</span>
+                      <span className="res-paper-meta">{p.j}<span className="res-paper-doi">DOI →</span></span>
+                    </a>)}
                   </div>
                 )}
               </div>
