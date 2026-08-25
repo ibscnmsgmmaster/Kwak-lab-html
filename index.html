@@ -20,7 +20,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased;}
+body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);line-height:1.72;font-size:16px;-webkit-font-smoothing:antialiased;}
 
 /* ── NAV ── */
 .nav{
@@ -59,12 +59,12 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   color:var(--accent);margin-bottom:1.2rem;
 }
 .h2{
-  font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;
+  font-size:clamp(1.85rem,3.2vw,2.6rem);font-weight:600;
   letter-spacing:-0.01em;color:var(--text);
   line-height:1.2;margin-bottom:1.4rem;
 }
 .h2 strong{font-weight:600;}
-.body-text{font-size:0.95rem;color:var(--text2);line-height:1.85;max-width:58ch;}
+.body-text{font-size:1rem;color:var(--text2);line-height:1.85;max-width:60ch;}
 .divider{height:1px;background:var(--border);margin:0;}
 
 /* ── HERO ── */
@@ -250,7 +250,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .pi-layout{display:grid;grid-template-columns:260px 1fr;gap:5rem;align-items:start;}
 .pi-photo{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(8%);}
 .pi-photo-placeholder{width:100%;aspect-ratio:3/4;background:var(--bg2);display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:2rem;}
-.pi-name{font-size:1.7rem;font-weight:300;letter-spacing:-0.01em;color:var(--text);margin-bottom:0.3rem;}
+.pi-name{font-size:1.8rem;font-weight:500;letter-spacing:-0.01em;color:var(--text);margin-bottom:0.3rem;}
 .pi-role{font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
 .pi-affil{font-size:0.88rem;color:var(--text2);margin-bottom:0.4rem;}
 .pi-email a{font-size:0.88rem;color:var(--accent);text-decoration:none;}
@@ -363,7 +363,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 /* ── CONTACT STRIP ── */
 .cstrip{background:var(--accent);padding:1.4rem 0;}
 .cstrip-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;}
-.cstrip h3{font-size:1.5rem;font-weight:300;color:#fff;letter-spacing:-0.01em;}
+.cstrip h3{font-size:1.5rem;font-weight:400;color:#fff;letter-spacing:-0.01em;}
 .cstrip p{font-size:0.88rem;color:rgba(255,255,255,0.65);margin-top:0.3rem;}
 
 
@@ -372,7 +372,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .res-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.8rem;align-items:start;}
 .res-img-grid img{width:100%;height:auto;display:block;filter:grayscale(8%);transition:filter 0.3s;}
 .res-img-grid img:hover{filter:grayscale(0%);}
-.res-hero-img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;border-radius:14px;margin:0.4rem 0 2rem;border:1px solid var(--border);box-shadow:0 12px 34px rgba(0,48,135,0.12),0 2px 8px rgba(0,0,0,0.06);}
+.res-hero-img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;border-radius:14px;margin:1.6rem 0 0.4rem;border:1px solid var(--border);box-shadow:0 12px 34px rgba(0,48,135,0.12),0 2px 8px rgba(0,0,0,0.06);}
 .res-papers{margin-top:2.2rem;padding-top:1.6rem;border-top:1px solid var(--border);max-width:none;}
 .res-papers-label{font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);margin-bottom:0.8rem;}
 .res-paper{display:flex;flex-direction:column;gap:0.3rem;padding:0.8rem 0;border-bottom:1px solid var(--border);text-decoration:none;transition:padding-left 0.2s;}
@@ -390,7 +390,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .npost-back{font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);background:none;border:none;cursor:pointer;padding:0;margin-bottom:2.5rem;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s;}
 .npost-back:hover{color:var(--accent);}
 .npost-tag{font-size:0.63rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block;}
-.npost-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:300;line-height:1.2;color:var(--text);margin-bottom:1rem;letter-spacing:-0.01em;}
+.npost-title{font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:500;line-height:1.2;color:var(--text);margin-bottom:1rem;letter-spacing:-0.01em;}
 .npost-meta{font-size:0.8rem;color:var(--text3);display:flex;align-items:center;gap:0.8rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border);}
 .npost-body{max-width:76ch;padding:3rem 0 2rem;}
 .npost-body p{font-size:0.97rem;color:var(--text2);line-height:1.9;margin-bottom:1.6rem;}
@@ -788,7 +788,6 @@ function Research(){
   return <div className="pg">
     <section className="sec">
       <div className="wrap">
-        <span className="label">Our Work</span>
         <h2 className="h2">Research Areas</h2>
         <p className="body-text" style={{marginBottom:"3rem",color:"var(--text)",maxWidth:"50rem",fontSize:"1rem"}}>We build nanoscale and synthetic tools that convert physical energy into precise signaling inputs — then apply them to wirelessly control the brain and engineer immunity in living systems.</p>
         <div className="res-list">
@@ -797,10 +796,10 @@ function Research(){
               <div className="res-full-num">{r.n}</div>
               <div>
                 <div className="res-full-title">{r.t}</div>
+                <div className="res-full-text">{r.d}</div>
                 {r.img&&(
                   <img className="res-hero-img" src={r.img} alt={r.t} loading="lazy" onError={e=>{e.target.style.display="none";}}/>
                 )}
-                <div className="res-full-text">{r.d}</div>
                 {r.papers&&r.papers.length>0&&(
                   <div className="res-papers">
                     <div className="res-papers-label">Key Publications</div>
@@ -824,7 +823,6 @@ function PIPage(){
   return <div className="pg">
     <section className="sec">
       <div className="wrap">
-        <span className="label">The Team</span>
         <h2 className="h2">Principal Investigator</h2>
         <div className="pi-layout" style={{marginTop:"3rem"}}>
           <div>
@@ -854,7 +852,6 @@ function Members(){
   return <div className="pg">
     <section className="sec">
       <div className="wrap">
-        <span className="label">The Team</span>
         <h2 className="h2">Members</h2>
         {/* Postdoc */}
         <div className="msec-title" style={{marginTop:"3rem"}}>Postdoctoral Researchers</div>
@@ -884,7 +881,6 @@ function Publications(){
   return <div className="pg">
     <section className="sec">
       <div className="wrap">
-        <span className="label">Research Output</span>
         <h2 className="h2">Publications</h2>
         <p className="body-text" style={{marginBottom:"2.5rem"}}>* denotes corresponding author · # denotes co-first author</p>
         <div className="pub-filter">
@@ -917,7 +913,6 @@ function News({go}){
   return <div className="pg">
     <section className="sec">
       <div className="wrap">
-        <span className="label">Updates</span>
         <h2 className="h2">News &amp; Events</h2>
         <div className="news-grid">
           {items.map(({n,i})=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
@@ -939,7 +934,6 @@ function Gallery({go}){
   return <div className="pg">
     <section className="sec">
       <div className="wrap">
-        <span className="label">Photos</span>
         <h2 className="h2">Gallery</h2>
         <div className="news-grid">
           {items.map(({n,i})=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
@@ -961,7 +955,6 @@ function Join(){
     <section className="sec">
       <div className="wrap">
         <div className="join-top">
-          <span className="label">We're Hiring</span>
           <h2 className="h2" style={{margin:"0 auto 1.5rem"}}>Join the Lab</h2>
           <p className="body-text" style={{margin:"0 auto",textAlign:"center"}}>We are always seeking highly motivated and collegial colleagues to work at the interface of nanoscience, synthetic biology, and cell biology — to investigate how cell signaling works and develop next-generation cellular therapeutics.</p>
         </div>
