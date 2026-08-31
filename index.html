@@ -129,7 +129,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   background:linear-gradient(90deg,rgba(100,160,255,0.8),transparent);
 }
 .hero-h1{
-  font-size:clamp(2.8rem,6vw,5.2rem);font-weight:200;
+  font-size:clamp(2.1rem,4.6vw,3.9rem);font-weight:200;
   letter-spacing:-0.03em;line-height:1.05;
   color:#ffffff;margin-bottom:0.25rem;
 }
@@ -142,14 +142,14 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 }
 @keyframes shimmer{0%{background-position:0%}50%{background-position:100%}100%{background-position:0%}}
 .hero-h1-sub{
-  font-size:clamp(2.8rem,6vw,5.2rem);font-weight:200;
+  font-size:clamp(2.1rem,4.6vw,3.9rem);font-weight:200;
   letter-spacing:-0.03em;line-height:1.05;
   color:rgba(255,255,255,0.22);margin-bottom:1.6rem;
   font-family:'EB Garamond',serif;font-style:italic;
 }
 .hero-desc{
-  font-size:1rem;color:rgba(255,255,255,0.55);max-width:50ch;
-  line-height:1.9;margin-bottom:2rem;font-weight:300;
+  font-size:1.15rem;color:rgba(255,255,255,0.72);max-width:58ch;
+  line-height:1.75;margin-bottom:2rem;font-weight:400;
 }
 .hero-ctas{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:2.8rem;}
 .btn{
@@ -174,6 +174,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   background:rgba(100,160,255,0.1);
   border-color:rgba(100,160,255,0.7);transform:translateY(-1px);
 }
+.btn-lg{font-size:0.85rem;padding:1.2rem 3.2rem;letter-spacing:0.16em;}
 .hero-stats{
   display:grid;grid-template-columns:repeat(4,1fr);
   border-top:1px solid rgba(255,255,255,0.08);
@@ -373,6 +374,11 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .res-img-grid img{width:100%;height:auto;display:block;filter:grayscale(8%);transition:filter 0.3s;}
 .res-img-grid img:hover{filter:grayscale(0%);}
 .res-hero-img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;border-radius:14px;margin:1.6rem 0 0.4rem;border:1px solid var(--border);box-shadow:0 12px 34px rgba(0,48,135,0.12),0 2px 8px rgba(0,0,0,0.06);}
+.res-figpair{display:flex;flex-wrap:wrap;gap:1.2rem;margin:1.6rem 0 0.4rem;}
+.res-figpair .figcell{flex:1 1 300px;aspect-ratio:4/3;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 12px 34px rgba(0,48,135,0.12),0 2px 8px rgba(0,0,0,0.06);background:#080d1a;}
+.res-figpair img{width:100%;height:100%;display:block;}
+.res-figpair img.figcover{object-fit:cover;}
+.res-figpair img.figcontain{object-fit:contain;}
 .res-papers{margin-top:2.2rem;padding-top:1.6rem;border-top:1px solid var(--border);max-width:none;}
 .res-papers-label{font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);margin-bottom:0.8rem;}
 .res-paper{display:flex;flex-direction:column;gap:0.3rem;padding:0.8rem 0;border-bottom:1px solid var(--border);text-decoration:none;transition:padding-left 0.2s;}
@@ -477,28 +483,31 @@ const {useState,useEffect}=React;
 
 /* ─── DATA ─────────────────────────────────────────── */
 const RA=[
-  {n:"01",t:"Nano & Synthetic Tools for Signaling Control",
-   s:"The toolbox — magnetic nanoparticles, DNA nanomachines, and synthetic receptors that convert physical energy into precise signaling inputs.",
-   d:"We build the tools that make cell signaling controllable. Magnetic nanoparticles, DNA-based nanomachines, and synthetic receptors and circuits transduce physical modalities \u2014 magnetic fields, mechanical force, light, and ultrasound \u2014 into biologically defined signaling inputs. These platforms deliver on-demand, targeted, and wireless control to specific receptors at single-molecule and single-cell resolution, both in vitro and in vivo.",
+  {n:"01",t:"Nanoscience \u00d7 Synthetic Biology for Cell Control",
+   s:"Where nanoscience meets synthetic biology \u2014 magnetic nanoparticles, DNA nanomachines, and engineered synthetic receptors that control living cells with precision.",
+   d:"We fuse nanoscience and synthetic biology to build tools that control living cells. Magnetic nanoparticles, DNA-based nanomachines, and engineered synthetic receptors and circuits convert physical cues \u2014 magnetic fields, mechanical force, light, and ultrasound \u2014 into defined cellular responses, delivering on-demand, targeted control at single-molecule and single-cell resolution, both in vitro and in vivo.",
    img:"images/Nanoparticle_ion_channel_gating.png",
+   img2:"images/Nanoclutch.png",
    papers:[
      {t:"A magnetically-powered nanomachine with a DNA clutch",j:"Nature Nanotechnology \u00b7 2024",doi:"10.1038/s41565-023-01599-6"},
      {t:"Small, clickable, and monovalent magnetofluorescent nanoparticles enable mechanogenetic regulation of receptors",j:"Nano Letters \u00b7 2019",doi:"10.1021/acs.nanolett.9b00891"},
      {t:"Hydrogel magnetomechanical actuator (h-MMA) nanoparticles for wireless remote control of mechanosignaling in vivo",j:"Nano Letters \u00b7 2023",doi:"10.1021/acs.nanolett.3c01207"}
    ]},
-  {n:"02",t:"Remote Control of the Brain",
-   s:"Magnetogenetic platforms that wirelessly modulate specific brain circuits in vivo \u2014 a non-invasive route to treating neurological disease.",
-   d:"We develop magnetogenetic platforms for non-invasive, wireless, cell-type-specific control of neurons in the living brain. By converting magnetic fields into targeted signaling at defined neural populations, our tools modulate brain circuits in vivo \u2014 reversing motor deficits in Parkinsonian models and opening new therapeutic avenues for neurological disorders.",
+  {n:"02",t:"Magnetic-BCI: Remote Control of the Brain",
+   s:"Remote, precision control of the brain \u2014 magnetogenetic platforms that wirelessly and cell-specifically modulate neural circuits in vivo, a non-invasive route to treating neurological disease.",
+   d:"We build magnetic brain\u2013computer interfaces (Magnetic-BCI) for non-invasive, wireless, cell-type-specific control of neurons in the living brain. By converting magnetic fields into targeted neural signaling, our platforms remotely and precisely modulate brain circuits in vivo \u2014 reversing motor deficits in Parkinsonian models and opening new therapeutic routes for neurological disorders.",
    img:"images/Brain_magnetic_field_neuron_activation.png",
+   img2:"images/Neuron.jpg",
    papers:[
      {t:"In vivo magnetogenetics for cell-type specific targeting and modulation of brain circuits",j:"Nature Nanotechnology \u00b7 2024",doi:"10.1038/s41565-024-01694-2"},
      {t:"Nanoscale magneto-mechanical-genetics of deep brain neurons reversing motor deficits in Parkinsonian mice",j:"Nano Letters \u00b7 2024",doi:"10.1021/acs.nanolett.3c03899"},
      {t:"Electromagnetic interference-shielded graphene-copper neural interface for real-time electrophysiology under magnetic modulation",j:"ACS Nano \u00b7 2025",doi:"10.1021/acsnano.5c15409"}
    ]},
-  {n:"03",t:"Engineering Immunity",
-   s:"Synthetic and magnetic control of immune cells \u2014 engineering activation from the receptor up toward next-generation cellular therapeutics.",
-   d:"We engineer the signaling machinery of immune cells to build next-generation cellular therapeutics. Using synthetic membrane nanostructures and receptor-level engineering, we control how immune cells sense and respond \u2014 from the organization of early T-cell activation signals to the mechanics of receptor proteolysis \u2014 with the precision needed for targeted immunotherapy.",
+  {n:"03",t:"Engineering Immunity for Disease Therapy",
+   s:"Synthetic and magnetic control of immune cells \u2014 engineering activation from the receptor up toward next-generation immunotherapies.",
+   d:"We engineer the signaling machinery of immune cells to build next-generation therapeutics. Using synthetic membrane nanostructures and receptor-level engineering, we control how immune cells sense and respond \u2014 from the organization of early T-cell activation signals to the mechanics of receptor proteolysis \u2014 with the precision needed for targeted immunotherapy and cell-based disease treatment.",
    img:"images/T_cell_Target_cell_docking.png",
+   img2:"images/Nanoparticle_Tcell.png",
    papers:[
      {t:"Cholesterol-DNA origami nanostructures for synthetic lipid rafts induce early T cell activation signals",j:"Advanced Materials Interfaces \u00b7 2026",doi:"10.1002/admi.202500806"},
      {t:"Adherens junctions organize size-selective proteolytic hotspots critical for Notch signalling",j:"Nature Cell Biology \u00b7 2022",doi:"10.1038/s41556-022-01031-6"}
@@ -700,9 +709,9 @@ function Home({go}){
         <div className="hero-eyebrow fu">Yonsei University · Advanced Science Institute</div>
         <h1 className="hero-h1 fu2">Receptor and<br/><em>Cell Signaling</em></h1>
         <div className="hero-h1-sub fu2">Engineering Laboratory</div>
-        <p className="hero-desc fu3">A multidisciplinary research group dedicated to understanding how cells sense and process environmental cues — and to engineering novel tools that manipulate cellular responses with precision.</p>
+        <p className="hero-desc fu3">A multidisciplinary lab engineering how cells sense and decide. Our work spans three fronts — nano- and synthetic-biology tools for cell control, magnetic brain–computer interfaces for remote neural control, and immune engineering for disease therapy — across magnetogenetics, nanomedicine, synthetic biology, mechanobiology, and immunoengineering.</p>
         <div className="hero-ctas fu4">
-          <button className="btn btn-fill" onClick={()=>go("research")}>Explore Research</button>
+          <button className="btn btn-fill btn-lg" onClick={()=>go("research")}>Explore Research</button>
         </div>
       </div>
 
@@ -798,7 +807,10 @@ function Research(){
                 <div className="res-full-title">{r.t}</div>
                 <div className="res-full-text">{r.d}</div>
                 {r.img&&(
-                  <img className="res-hero-img" src={r.img} alt={r.t} loading="lazy" onError={e=>{e.target.style.display="none";}}/>
+                  <div className="res-figpair">
+                    <div className="figcell"><img className="figcover" src={r.img} alt={r.t} loading="lazy" onError={e=>{e.target.parentElement.style.display="none";}}/></div>
+                    {r.img2&&<div className="figcell"><img className="figcontain" src={r.img2} alt={r.t} loading="lazy" onError={e=>{e.target.parentElement.style.display="none";}}/></div>}
+                  </div>
                 )}
                 {r.papers&&r.papers.length>0&&(
                   <div className="res-papers">
