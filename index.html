@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Kwak Laboratory | Yonsei University</title>
+<title>SNBE Laboratory | Yonsei University</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
@@ -129,9 +129,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   background:linear-gradient(90deg,rgba(100,160,255,0.8),transparent);
 }
 .hero-h1{
-  font-size:clamp(2.1rem,4.6vw,3.9rem);font-weight:200;
-  letter-spacing:-0.03em;line-height:1.05;
-  color:#ffffff;margin-bottom:0.25rem;
+  font-size:clamp(2rem,4.4vw,3.6rem);font-weight:300;
+  letter-spacing:-0.02em;line-height:1.1;
+  color:#ffffff;margin-bottom:0.1rem;
 }
 .hero-h1 em{
   font-style:normal;font-weight:700;
@@ -142,10 +142,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 }
 @keyframes shimmer{0%{background-position:0%}50%{background-position:100%}100%{background-position:0%}}
 .hero-h1-sub{
-  font-size:clamp(2.1rem,4.6vw,3.9rem);font-weight:200;
-  letter-spacing:-0.03em;line-height:1.05;
-  color:rgba(255,255,255,0.22);margin-bottom:1.6rem;
-  font-family:'EB Garamond',serif;font-style:italic;
+  font-size:clamp(2rem,4.4vw,3.6rem);font-weight:600;
+  letter-spacing:-0.02em;line-height:1.1;
+  color:#ffffff;margin-bottom:1.6rem;
 }
 .hero-desc{
   font-size:1.15rem;color:rgba(255,255,255,0.72);max-width:58ch;
@@ -587,6 +586,51 @@ const PB={
 };
 const NW=[
   {
+    date:"August 26, 2026",
+    title:"2026 Yonsei-IBS Workshop @Gangneung",
+    tag:"Workshop",
+    board:"gallery",
+    img:"https://ibs.yonsei.ac.kr/upload/image/202608261713136199309375000.jpg",
+    body:[],
+    photos:[
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713146199479687500.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713146199435937500.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713146199476562500.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713146199456250000.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713146199493750000.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713156199520312500.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713156199528125000.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713146199498437500.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713146199412500000.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713146199400000000.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713136199384375000.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713136199365625000.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713136199346875000.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713136199375000000.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713136199328125000.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202608261713136199315625000.jpg"
+    ]
+  },
+  {
+    date:"April 30, 2026",
+    title:"Bimonthly Science Festival 5 (Apr 29, 2026)",
+    tag:"Science Festival",
+    board:"gallery",
+    img:"https://ibs.yonsei.ac.kr/upload/image/202604301716536221385156250.jpg",
+    body:[],
+    photos:[
+      "https://ibs.yonsei.ac.kr/upload/image/202604301717116223139843750.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202604301717136223342968750.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202604301717296224924218750.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202604301717266224639843750.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202604301717346225428906250.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202604301717416226157031250.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202604301717486226840234375.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202604301717436226352343750.jpg",
+      "https://ibs.yonsei.ac.kr/upload/image/202604301717466226652343750.jpg"
+    ]
+  },
+  {
     date:"March 10, 2026",
     title:"2026년 후기 나노바이오메디컬엔지니어링 대학원 과정 입학설명회 개최",
     tag:"Announcement",
@@ -652,7 +696,7 @@ function Nav({pg,go}){
       <button style={{background:"none",border:"none",cursor:"pointer",textAlign:"left",padding:0,display:"flex",alignItems:"center",gap:"0.75rem"}} onClick={()=>go("home")}>
         <img src="images/image4.jpg" alt="Yonsei University" style={{width:"52px",height:"52px",objectFit:"contain"}}/>
         <div>
-          <div className="nav-logo-main">Kwak Laboratory</div>
+          <div className="nav-logo-main">SNBE Laboratory</div>
           <div className="nav-logo-sub">Yonsei University</div>
         </div>
       </button>
@@ -684,14 +728,14 @@ function Footer({go}){
   return <footer className="footer"><div className="wrap">
     <div className="footer-inner">
       <div>
-        <div className="footer-logo-text">Kwak Laboratory</div>
-        <div className="footer-info">Receptor and Cell Signaling Engineering<br/>Advanced Science Institute, Yonsei University<br/>IBS Hall, 50 Yonsei-ro, Seodaemun-gu, Seoul 03722</div>
+        <div className="footer-logo-text">SNBE Laboratory</div>
+        <div className="footer-info">Synthetic &amp; Nanoscale Bioengineering<br/>Advanced Science Institute, Yonsei University<br/>IBS Hall, 50 Yonsei-ro, Seodaemun-gu, Seoul 03722</div>
       </div>
       <div className="footer-links">
         {["home","research","members","publications","news","gallery","join"].map(p=><button key={p} className="flink" onClick={()=>go(p)}>{p==="join"?"Join":p==="members"?"Team":p.charAt(0).toUpperCase()+p.slice(1)}</button>)}
       </div>
     </div>
-    <div className="footer-copy">© 2025 Kwak Laboratory · Yonsei University · All Rights Reserved</div>
+    <div className="footer-copy">© 2025 SNBE Laboratory · Yonsei University · All Rights Reserved</div>
   </div></footer>;
 }
 
@@ -707,8 +751,8 @@ function Home({go}){
       </div>
       <div className="wrap hero-inner">
         <div className="hero-eyebrow fu">Yonsei University · Advanced Science Institute</div>
-        <h1 className="hero-h1 fu2">Receptor and<br/><em>Cell Signaling</em></h1>
-        <div className="hero-h1-sub fu2">Engineering Laboratory</div>
+        <h1 className="hero-h1 fu2">Synthetic &amp; Nanoscale</h1>
+        <div className="hero-h1-sub fu2">Bioengineering Laboratory</div>
         <p className="hero-desc fu3">A multidisciplinary lab engineering how cells sense and decide. Our work spans three fronts — nano- and synthetic-biology tools for cell control, magnetic brain–computer interfaces for remote neural control, and immune engineering for disease therapy — across magnetogenetics, nanomedicine, synthetic biology, mechanobiology, and immunoengineering.</p>
         <div className="hero-ctas fu4">
           <button className="btn btn-fill btn-lg" onClick={()=>go("research")}>Explore Research</button>
@@ -1018,7 +1062,7 @@ function NewsPost({post,go,allPosts,postIdx}){
         <h1 className="npost-title">{post.title}</h1>
         <div className="npost-meta">
           <span>📅 {post.date}</span>
-          <span>· Kwak Laboratory, Yonsei University</span>
+          <span>· SNBE Laboratory, Yonsei University</span>
         </div>
         <div className="npost-gallery" style={{marginTop:"2rem"}}>
           {allPhotos.map((src,i)=><img key={i} src={src} alt={"photo "+(i+1)}/>)}
