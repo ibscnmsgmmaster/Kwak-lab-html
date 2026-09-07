@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SNBE Laboratory | Yonsei University</title>
+<title>NCEL Laboratory | Yonsei University</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
@@ -522,8 +522,8 @@ const PI={
   awards:["2019  ·  Best Poster Award, ACS Publications & IBS Forum","2019  ·  Burroughs Wellcome Fund Collaborative Research Travel Award","2019  ·  Life Science Research Foundation (LSRF) Postdoctoral Fellowship","2018  ·  AACR Lymphoma Research Postdoctoral Fellowship","2015  ·  Edward L. Barlow Fellowship, Yale University","2011  ·  Allen International Scholarship (Full tuition, 4 years), Rice University"]
 };
 const PD=[
-  {name:"Wookjin Shin",title:"Research Professor",bs:"Chung-Ang U. (Chemistry)",phd:"Yonsei U. (Biotechnology)",int:"Magnetogenetics, Mechanobiology",img:"https://static.wixstatic.com/media/8a75a3_35fb8a8e20ee4c42a45896830cc0e917~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
-  {name:"Seo-hyun Choi",title:"Post-Doc",bs:"Busan Nat'l U. (Biology)",phd:"Yonsei U. (Molecular Biology)",int:"Magnetogenetics for neuroscience",img:"https://static.wixstatic.com/media/8a75a3_e1b71a9be5064addb5d69fb904abb16d~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Wookjin Shin",title:"Research Professor",bs:"Yonsei U. (Biotechnology)",phd:"Yonsei U. (Biotechnology)",int:"Magnetogenetics, Mechanobiology",img:"https://static.wixstatic.com/media/8a75a3_35fb8a8e20ee4c42a45896830cc0e917~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
+  {name:"Wheesoo Kim",title:"Post-Doc",bs:"Konkuk U. (Animal Biotech.)",phd:"Seoul Nat'l U. (Animal Biotech.)",int:"Ultrasound imaging with magnetogenetics for brain–gut axis research",img:"images/Wheesoo_kim.jpg"},
 ];
 const GR=[
   {name:"Kunwoo Noh",deg:"Ph.D.",bs:"Yonsei U. (Biotechnology)",int:"Immune cell engineering, Magnetogenetics",img:"https://static.wixstatic.com/media/8a75a3_e9eafed19e874edbb5662d8f596b6b85~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
@@ -547,6 +547,7 @@ const UG=[
   {name:"Juhye Baek",deg:"Undergrad",bs:"Yonsei U. (Chemical and Biomolecular Eng.)",int:"Immunotherapy, Cell Engineering",img:"https://static.wixstatic.com/media/8a75a3_9294656eb3e04497a81d334da17cb256~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
 ];
 const AL=[
+  {name:"Seo-Hyun Choi",period:"Post-doc (2021–2026)",pos:"Assistant Professor, Dong-A University College of Medicine"},
   {name:"YunMin Jung",period:"Post-doc (2021–2025)",pos:"Assistant Professor, U. of Ostrava, Faculty of Medicine"},
   {name:"Jihye Shin",period:"M.S. (2023–2025)",pos:"Pharmaresearch, Medical Science Liaison"},
   {name:"Jungmin Nam",period:"Undergrad (2020–2022)",pos:"Ph.D. student, Yale University"},
@@ -683,7 +684,9 @@ function MCard({m}){
     <div className="minfo">
       <div className="mname">{m.name}</div>
       {(m.deg||m.title)&&<div className="mdeg">{m.deg||m.title}</div>}
-      <div className="mbs">{m.bs||m.phd||""}</div>
+      {m.phd
+        ? <React.Fragment><div className="mbs">B.S. {m.bs}</div><div className="mbs">Ph.D. {m.phd}</div></React.Fragment>
+        : <div className="mbs">{m.bs||""}</div>}
       <div className="mint">{m.int||""}</div>
     </div>
   </div>;
@@ -697,7 +700,7 @@ function Nav({pg,go}){
       <button style={{background:"none",border:"none",cursor:"pointer",textAlign:"left",padding:0,display:"flex",alignItems:"center",gap:"0.75rem"}} onClick={()=>go("home")}>
         <img src="images/image4.jpg" alt="Yonsei University" style={{width:"52px",height:"52px",objectFit:"contain"}}/>
         <div>
-          <div className="nav-logo-main">SNBE Laboratory</div>
+          <div className="nav-logo-main">NCEL Laboratory</div>
           <div className="nav-logo-sub">Yonsei University</div>
         </div>
       </button>
@@ -729,14 +732,14 @@ function Footer({go}){
   return <footer className="footer"><div className="wrap">
     <div className="footer-inner">
       <div>
-        <div className="footer-logo-text">SNBE Laboratory</div>
-        <div className="footer-info">Synthetic &amp; Nanoscale Bioengineering<br/>Advanced Science Institute, Yonsei University<br/>IBS Hall, 50 Yonsei-ro, Seodaemun-gu, Seoul 03722</div>
+        <div className="footer-logo-text">NCEL Laboratory</div>
+        <div className="footer-info">Nanoscale Cell Engineering<br/>Advanced Science Institute, Yonsei University<br/>IBS Hall, 50 Yonsei-ro, Seodaemun-gu, Seoul 03722</div>
       </div>
       <div className="footer-links">
         {["home","research","members","publications","news","gallery","join"].map(p=><button key={p} className="flink" onClick={()=>go(p)}>{p==="join"?"Join":p==="members"?"Team":p.charAt(0).toUpperCase()+p.slice(1)}</button>)}
       </div>
     </div>
-    <div className="footer-copy">© 2025 SNBE Laboratory · Yonsei University · All Rights Reserved</div>
+    <div className="footer-copy">© 2025 NCEL Laboratory · Yonsei University · All Rights Reserved</div>
   </div></footer>;
 }
 
@@ -752,8 +755,8 @@ function Home({go}){
       </div>
       <div className="wrap hero-inner">
         <div className="hero-eyebrow fu">Yonsei University · Advanced Science Institute</div>
-        <h1 className="hero-h1 fu2">Synthetic &amp; Nanoscale</h1>
-        <div className="hero-h1-sub fu2">Bioengineering Laboratory</div>
+        <h1 className="hero-h1 fu2">Nano-Scale</h1>
+        <div className="hero-h1-sub fu2">Cell Engineering Lab</div>
         <p className="hero-desc fu3">A multidisciplinary lab engineering how cells sense and decide. Our work spans three fronts — nano- and synthetic-biology tools for cell control, magnetic brain–computer interfaces for remote neural control, and immune engineering for disease therapy — across magnetogenetics, nanomedicine, synthetic biology, mechanobiology, and immunoengineering.</p>
         <div className="hero-ctas fu4">
           <button className="btn btn-fill btn-lg" onClick={()=>go("research")}>Explore Research</button>
@@ -1063,7 +1066,7 @@ function NewsPost({post,go,allPosts,postIdx}){
         <h1 className="npost-title">{post.title}</h1>
         <div className="npost-meta">
           <span>📅 {post.date}</span>
-          <span>· SNBE Laboratory, Yonsei University</span>
+          <span>· NCEL Laboratory, Yonsei University</span>
         </div>
         <div className="npost-gallery" style={{marginTop:"2rem"}}>
           {allPhotos.map((src,i)=><img key={i} src={src} alt={"photo "+(i+1)}/>)}
