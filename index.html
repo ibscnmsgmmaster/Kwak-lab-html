@@ -329,6 +329,10 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 
 /* ── NEWS ── */
 .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;margin-top:3rem;}
+.home-sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;}
+.home-h2{font-size:clamp(1.3rem,2.4vw,1.7rem);font-weight:600;letter-spacing:-0.01em;color:var(--text);line-height:1.2;}
+.home-more{background:none;border:none;cursor:pointer;font-family:inherit;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);white-space:nowrap;transition:opacity 0.2s;}
+.home-more:hover{opacity:0.55;}
 .ncard{cursor:pointer;transition:all 0.25s;border:1px solid var(--border);}
 .ncard:hover{box-shadow:0 8px 32px rgba(0,48,135,0.08);transform:translateY(-2px);}
 .nimg{width:100%;height:280px;object-fit:contain;background:var(--bg2);display:block;filter:grayscale(10%);transition:filter 0.3s;}
@@ -531,7 +535,6 @@ const GR=[
   {name:"Somin Lee",deg:"Ph.D.",bs:"Yonsei U. (Chemistry & Material Eng.)",int:"Nanorobotics, Magnetic nanoparticle mechanobiology, nano-bio interfaces",img:"https://static.wixstatic.com/media/8a75a3_d03b2308d48b4660b0bcf68ee05209b5~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
   {name:"Hanho Joo",deg:"Ph.D.",bs:"Chung-Ang U. (Biomedical Eng.)",int:"Magnetic control of immune cells, Nano-bio interface",img:"https://static.wixstatic.com/media/8a75a3_b0fa12b3dc0f435492db429f9bd364b6~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
   {name:"Jin Lee",deg:"Ph.D.",bs:"Dongguk U. (Biotechnology)",int:"Cell engineering, Magnetogenetics",img:"https://static.wixstatic.com/media/8a75a3_61bda3c256584fea88ed95450aca7427~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
-  {name:"Yubin Lee",deg:"Ph.D.",bs:"Yonsei U. (Bioconvergence)",int:"Magnetogenetics for neuroscience",img:"https://static.wixstatic.com/media/8a75a3_c09ec79baa0f4dfdbcb4d6f742968943~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
   {name:"Yerin Jang",deg:"Ph.D.",bs:"Yonsei U. (Bioconvergence)",int:"Magnetogenetic treatment of neurological diseases, Cell engineering",img:"https://static.wixstatic.com/media/8a75a3_a53202f4049a4c8ca683f84eec4dd9f7~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
   {name:"Jeongsoo Hong",deg:"Ph.D.",bs:"Sungkyunkwan U. (Biological Science)",int:"Magnetogenetic treatment of neurological diseases",img:"https://static.wixstatic.com/media/8a75a3_493f87d3055c42fdb3aa682f1da340ba~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
   {name:"Ri Yu",deg:"Ph.D.",bs:"M.S. Sungkyunkwan U. (Chemistry)",int:"Brain-Gut axis, Neuroscience",img:"https://static.wixstatic.com/media/8a75a3_aa7b29b8108d477281afed4accd7faf4~mv2.png/v1/fill/w_403,h_404,al_c,q_85,enc_avif,quality_auto/image.png"},
@@ -549,6 +552,7 @@ const UG=[
 const AL=[
   {name:"Seo-Hyun Choi",period:"Post-doc (2021–2026)",pos:"Assistant Professor, Dong-A University College of Medicine"},
   {name:"YunMin Jung",period:"Post-doc (2021–2025)",pos:"Assistant Professor, U. of Ostrava, Faculty of Medicine"},
+  {name:"Yubin Lee",period:"M.S. (2023–2026)",pos:"Jeisys Medical, Clinical Specialist"},
   {name:"Jihye Shin",period:"M.S. (2023–2025)",pos:"Pharmaresearch, Medical Science Liaison"},
   {name:"Jungmin Nam",period:"Undergrad (2020–2022)",pos:"Ph.D. student, Yale University"},
   {name:"Hyunji Park",period:"Undergrad (2020–2021)",pos:"Ph.D. student, KAIST"},
@@ -779,10 +783,13 @@ function Home({go}){
     </div>
 
     {/* FEATURED PUBLICATIONS */}
-    <section className="sec sec-alt">
+    <section className="sec">
       <div className="wrap">
-        <h2 className="h2">Featured Publications</h2>
-        <div className="news-grid" style={{gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))"}}>
+        <div className="home-sec-head">
+          <h2 className="home-h2">Featured Publications</h2>
+          <button className="home-more" onClick={()=>go("publications")}>More →</button>
+        </div>
+        <div className="news-grid" style={{gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",marginTop:"1.5rem"}}>
           {[
             {
               journal:"Nature Nanotechnology",year:2024,
@@ -823,11 +830,14 @@ function Home({go}){
     </section>
 
     {/* NEWS & FEATURED PUB */}
-    <section className="sec sec-alt">
+    <section className="sec" style={{background:"#eef3fb"}}>
       <div className="wrap">
-        <h2 className="h2">News & Events</h2>
-        <div className="news-grid">
-          {NW.map((n,i)=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
+        <div className="home-sec-head">
+          <h2 className="home-h2">News & Events</h2>
+          <button className="home-more" onClick={()=>go("news")}>More →</button>
+        </div>
+        <div className="news-grid" style={{marginTop:"1.5rem"}}>
+          {NW.slice(0,4).map((n,i)=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
             <img src={n.img} alt={n.title} className="nimg"/>
             <div className="nbody">
               <span className="ntag">{n.tag}</span>
