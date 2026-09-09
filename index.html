@@ -599,7 +599,8 @@ const NW=[
     title:"2027년 전기 나노바이오메디컬엔지니어링 대학원 과정 입학설명회 개최",
     tag:"Announcement",
     board:"news",
-    img:"images/Admission_2027.png",
+    thumb:"images/Admission_2027.png",
+    img:"https://ibs.yonsei.ac.kr/upload/image/202609071330494864992968750.png",
     body:[],
     photos:[]
   },
@@ -799,7 +800,7 @@ function Home({go}){
       </div>
       <div className="wrap hero-inner">
         <div className="hero-eyebrow fu">Yonsei University · Advanced Science Institute</div>
-        <h1 className="hero-h1 fu2">Nano-Scale</h1>
+        <h1 className="hero-h1 fu2">Nano-scale</h1>
         <div className="hero-h1-sub fu2">Cell Engineering Lab</div>
         <p className="hero-desc fu3">A multidisciplinary lab engineering how cells sense and decide. Our work spans three fronts — nano- and synthetic-biology tools for cell control, magnetic brain–computer interfaces for remote neural control, and immune engineering for disease therapy — across magnetogenetics, nanomedicine, synthetic biology, mechanobiology, and immunoengineering.</p>
         <div className="hero-ctas fu4">
@@ -876,7 +877,7 @@ function Home({go}){
         </div>
         <div className="news-grid" style={{marginTop:"1.5rem"}}>
           {NW.slice(0,4).map((n,i)=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
-            <img src={n.img} alt={n.title} className="nimg"/>
+            <img src={n.thumb||n.img} alt={n.title} className="nimg"/>
             <div className="nbody">
               <span className="ntag">{n.tag}</span>
               <div className="ntitle">{n.title}</div>
@@ -1024,7 +1025,7 @@ function News({go}){
         <h2 className="h2">News &amp; Events</h2>
         <div className="news-grid">
           {items.map(({n,i})=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
-            <img src={n.img} alt={n.title} className="nimg"/>
+            <img src={n.thumb||n.img} alt={n.title} className="nimg"/>
             <div className="nbody">
               <span className="ntag">{n.tag}</span>
               <div className="ntitle">{n.title}</div>
@@ -1045,7 +1046,7 @@ function Gallery({go}){
         <h2 className="h2">Gallery</h2>
         <div className="news-grid">
           {items.map(({n,i})=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
-            <img src={n.img} alt={n.title} className="nimg"/>
+            <img src={n.thumb||n.img} alt={n.title} className="nimg"/>
             <div className="nbody">
               <span className="ntag">{n.tag}</span>
               <div className="ntitle">{n.title}</div>
@@ -1127,7 +1128,7 @@ function NewsPost({post,go,allPosts,postIdx}){
             {related.map((n,i)=>{
               const idx=allPosts.findIndex(x=>x.title===n.title);
               return <div key={i} className="ncard" onClick={()=>go("newspost",idx)}>
-                <img src={n.img} alt={n.title} className="nimg"/>
+                <img src={n.thumb||n.img} alt={n.title} className="nimg"/>
                 <div className="nbody">
                   <span className="ntag">{n.tag}</span>
                   <div className="ntitle">{n.title}</div>
