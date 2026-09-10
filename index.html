@@ -50,6 +50,16 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .nl:hover{color:#fff;}
 .nl:hover::after,.nl.act::after{left:1.1rem;right:1.1rem;}
 .nl.act{color:#fff;}
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;padding:9px;background:none;border:none;cursor:pointer;}
+.nav-burger span{display:block;height:2px;width:100%;background:#fff;border-radius:2px;transition:transform 0.25s,opacity 0.25s;}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-burger.open span:nth-child(2){opacity:0;}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-mobile{position:fixed;top:var(--nav-h);left:0;right:0;z-index:199;background:rgba(2,5,20,0.98);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;padding:0.4rem 0;max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
+.nav-mobile button{background:none;border:none;text-align:left;color:#fff;font-size:0.92rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:0.95rem 1.5rem;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.06);}
+.nav-mobile button.on{color:#4fa3ff;}
+.nav-mobile button:active{background:rgba(255,255,255,0.06);}
+@media(min-width:701px){.nav-mobile{display:none;}}
 
 /* ── SHARED ── */
 .pg{padding-top:var(--nav-h);min-height:100vh;}
@@ -442,6 +452,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 }
 @media(max-width:700px){
   .nav-links{display:none;}
+  .nav-burger{display:flex;}
   .nav-inner{padding:0 1.5rem;}
   .wrap{padding:0 1.5rem;}
   .hero-inner{padding:8rem 0 5rem;}
@@ -738,6 +749,7 @@ function MCard({m}){
 }
 
 function Nav({pg,go}){
+  const [mOpen,sMOpen]=useState(false);
   const onTeam=(pg==="pi"||pg==="members");
   const onBoards=(pg==="news"||pg==="gallery");
   return <nav className="nav">
@@ -769,7 +781,18 @@ function Nav({pg,go}){
         </div>
         <button className={"nl"+(pg==="join"?" act":"")} onClick={()=>go("join")}>Join the Lab</button>
       </div>
+      <button className={"nav-burger"+(mOpen?" open":"")} aria-label="Menu" onClick={()=>sMOpen(!mOpen)}><span></span><span></span><span></span></button>
     </div>
+    {mOpen&&<div className="nav-mobile">
+      <button className={pg==="home"?"on":""} onClick={()=>{go("home");sMOpen(false);}}>Home</button>
+      <button className={pg==="research"?"on":""} onClick={()=>{go("research");sMOpen(false);}}>Research</button>
+      <button className={pg==="pi"?"on":""} onClick={()=>{go("pi");sMOpen(false);}}>Principal Investigator</button>
+      <button className={pg==="members"?"on":""} onClick={()=>{go("members");sMOpen(false);}}>Members</button>
+      <button className={pg==="publications"?"on":""} onClick={()=>{go("publications");sMOpen(false);}}>Publications</button>
+      <button className={pg==="news"?"on":""} onClick={()=>{go("news");sMOpen(false);}}>News</button>
+      <button className={pg==="gallery"?"on":""} onClick={()=>{go("gallery");sMOpen(false);}}>Gallery</button>
+      <button className={pg==="join"?"on":""} onClick={()=>{go("join");sMOpen(false);}}>Join the Lab</button>
+    </div>}
   </nav>;
 }
 
