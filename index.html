@@ -187,6 +187,8 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   border-color:rgba(100,160,255,0.7);transform:translateY(-1px);
 }
 .btn-lg{font-size:0.85rem;padding:1.2rem 3.2rem;letter-spacing:0.16em;}
+.scholar-btn{display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent);color:#fff;text-decoration:none;font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:0.65rem 1.3rem;border-radius:8px;margin-bottom:1.8rem;transition:background 0.2s,transform 0.2s;}
+.scholar-btn:hover{background:var(--accent2);transform:translateY(-1px);}
 .hero-stats{
   display:grid;grid-template-columns:repeat(4,1fr);
   border-top:1px solid rgba(255,255,255,0.08);
@@ -1014,6 +1016,7 @@ function Publications(){
     <section className="sec">
       <div className="wrap">
         <h2 className="h2">Publications</h2>
+        <div><a className="scholar-btn" href={"https://scholar.google.com/citations?user=5FaZPpEAAAAJ&hl=en"} target="_blank" rel="noopener noreferrer">Prof. Minsuk Kwak · Google Scholar ↗</a></div>
         <p className="body-text" style={{marginBottom:"2.5rem"}}>* denotes corresponding author · # denotes co-first author</p>
         <div className="pub-filter">
           {["all","yonsei","ucsf","yale"].map(k=><button key={k} className={"pub-fbtn"+(f===k?" on":"")} onClick={()=>sF(k)}>
