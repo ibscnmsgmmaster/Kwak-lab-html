@@ -823,13 +823,13 @@ function Home({go}){
     </div>
 
     {/* FEATURED PUBLICATIONS */}
-    <section className="sec">
+    <section className="sec" style={{paddingTop:"2.5rem"}}>
       <div className="wrap">
         <div className="home-sec-head">
           <h2 className="home-h2">Featured Publications</h2>
           <button className="home-more" onClick={()=>go("publications")}>More →</button>
         </div>
-        <div className="news-grid" style={{gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",marginTop:"2.6rem"}}>
+        <div className="news-grid" style={{gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",marginTop:"3.6rem"}}>
           {[
             {
               journal:"Nature Nanotechnology",year:2024,
@@ -876,7 +876,7 @@ function Home({go}){
           <h2 className="home-h2">News & Gallery</h2>
           <button className="home-more" onClick={()=>go("news")}>More →</button>
         </div>
-        <div className="news-grid" style={{marginTop:"2.6rem"}}>
+        <div className="news-grid" style={{marginTop:"3.6rem"}}>
           {NW.slice(0,4).map((n,i)=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
             <img src={n.img} alt={n.title} className="nimg"/>
             <div className="nbody">
@@ -1007,7 +1007,6 @@ function Publications(){
               <div className="pub-a">{p.a}</div>
               <div className="pub-meta">
                 <span className="pub-j">{p.j} ({p.y})</span>
-                {p.hl&&<span className="pub-hl">★ High Impact</span>}
                 {p.doi&&<a href={"https://doi.org/"+p.doi} target="_blank" className="pub-doi">DOI →</a>}
               </div>
             </div>
