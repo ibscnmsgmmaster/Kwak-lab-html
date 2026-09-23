@@ -82,29 +82,37 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   content:'';
   position:absolute;inset:0;
   background-image:
-    linear-gradient(rgba(0,80,200,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,80,200,0.07) 1px, transparent 1px);
-  background-size:60px 60px;
-  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    linear-gradient(rgba(90,150,255,0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90,150,255,0.16) 1px, transparent 1px);
+  background-size:58px 58px;
+  mask-image:radial-gradient(ellipse 100% 95% at 40% 50%, black 60%, transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 100% 95% at 40% 50%, black 60%, transparent 100%);
+  animation:gridDrift 34s linear infinite;
 }
+@keyframes gridDrift{from{background-position:0 0,0 0}to{background-position:58px 58px,58px 58px}}
 /* Glowing orbs */
 .hero::after{
   content:'';
   position:absolute;
-  width:700px;height:700px;
+  width:780px;height:780px;
   border-radius:50%;
-  background:radial-gradient(circle, rgba(0,71,200,0.18) 0%, rgba(0,48,135,0.08) 40%, transparent 70%);
-  top:-200px;right:-150px;
+  background:radial-gradient(circle, rgba(0,95,235,0.32) 0%, rgba(0,60,160,0.12) 42%, transparent 72%);
+  top:-220px;right:-170px;
   pointer-events:none;
+  animation:glowPulseA 11s ease-in-out infinite;
 }
+@keyframes glowPulseA{0%,100%{opacity:0.75;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
 .hero-orb2{
   position:absolute;
-  width:500px;height:500px;
+  width:640px;height:640px;
   border-radius:50%;
-  background:radial-gradient(circle, rgba(0,140,255,0.10) 0%, transparent 70%);
-  bottom:-150px;left:-100px;
+  background:radial-gradient(circle, rgba(0,155,255,0.22) 0%, rgba(0,90,220,0.09) 45%, transparent 72%);
+  bottom:-190px;left:-150px;
   pointer-events:none;
+  animation:glowFloat 14s ease-in-out infinite;
 }
+@keyframes glowFloat{0%,100%{transform:translate(0,0) scale(1);opacity:0.85}50%{transform:translate(46px,-34px) scale(1.16);opacity:1}}
+@media(prefers-reduced-motion:reduce){.hero::before,.hero::after,.hero-orb2{animation:none;}}
 /* Diagonal accent bar */
 .hero-stripe{
   position:absolute;
@@ -595,6 +603,18 @@ const PB={
 };
 const NW=[
   {
+    date:"August 2026",
+    title:"Congratulations to Our Graduates — Daeun Kang & Youbin Lee",
+    tag:"Graduation",
+    board:"gallery",
+    img:"images/gallery/Graduation_2026_1.png",
+    body:[],
+    photos:[
+      "images/gallery/Graduation_2026_2.png",
+      "images/gallery/Graduation_2026_3.png"
+    ]
+  },
+  {
     date:"September 7, 2026",
     title:"2027년 전기 나노바이오메디컬엔지니어링 대학원 과정 입학설명회 개최",
     tag:"Announcement",
@@ -870,7 +890,7 @@ function Home({go}){
     </section>
 
     {/* NEWS & FEATURED PUB */}
-    <section className="sec" style={{background:"#eef3fb"}}>
+    <section className="sec" style={{background:"#eef3fb",paddingTop:"2.5rem"}}>
       <div className="wrap">
         <div className="home-sec-head">
           <h2 className="home-h2">News & Gallery</h2>
