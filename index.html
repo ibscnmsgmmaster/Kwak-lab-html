@@ -82,14 +82,11 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   content:'';
   position:absolute;inset:0;
   background-image:
-    linear-gradient(rgba(90,150,255,0.16) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(90,150,255,0.16) 1px, transparent 1px);
-  background-size:58px 58px;
-  mask-image:radial-gradient(ellipse 100% 95% at 40% 50%, black 60%, transparent 100%);
-  -webkit-mask-image:radial-gradient(ellipse 100% 95% at 40% 50%, black 60%, transparent 100%);
-  animation:gridDrift 34s linear infinite;
+    linear-gradient(rgba(0,80,200,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,80,200,0.07) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
 }
-@keyframes gridDrift{from{background-position:0 0,0 0}to{background-position:58px 58px,58px 58px}}
 /* Glowing orbs */
 .hero::after{
   content:'';
@@ -112,7 +109,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   animation:glowFloat 14s ease-in-out infinite;
 }
 @keyframes glowFloat{0%,100%{transform:translate(0,0) scale(1);opacity:0.85}50%{transform:translate(46px,-34px) scale(1.16);opacity:1}}
-@media(prefers-reduced-motion:reduce){.hero::before,.hero::after,.hero-orb2{animation:none;}}
+@media(prefers-reduced-motion:reduce){.hero::after,.hero-orb2{animation:none;}}
 /* Diagonal accent bar */
 .hero-stripe{
   position:absolute;
@@ -607,11 +604,11 @@ const NW=[
     title:"Congratulations to Our Graduates — Daeun Kang & Youbin Lee",
     tag:"Graduation",
     board:"gallery",
-    img:"images/gallery/Graduation_2026_1.png",
+    img:"images/gallery/Graduation_2026_1.jpg",
     body:[],
     photos:[
-      "images/gallery/Graduation_2026_2.png",
-      "images/gallery/Graduation_2026_3.png"
+      "images/gallery/Graduation_2026_2.jpg",
+      "images/gallery/Graduation_2026_3.jpg"
     ]
   },
   {
