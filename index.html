@@ -106,9 +106,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   background:radial-gradient(circle, rgba(0,165,255,0.34) 0%, rgba(0,95,225,0.13) 45%, transparent 72%);
   bottom:-190px;left:-150px;
   pointer-events:none;
-  animation:glowFloat 9s ease-in-out infinite;
+  animation:glowFloat 3.4s ease-in-out infinite;
 }
-@keyframes glowFloat{0%{transform:translate(0,0) scale(1);opacity:0.7}30%{transform:translate(70px,-38px) scale(1.22);opacity:1}60%{transform:translate(30px,-72px) scale(1.1);opacity:0.85}100%{transform:translate(0,0) scale(1);opacity:0.7}}
+@keyframes glowFloat{0%,100%{transform:translate(0,0) scale(1);opacity:0.72}50%{transform:translate(16px,-12px) scale(1.13);opacity:1}}
 @media(prefers-reduced-motion:reduce){.hero::after,.hero-orb2,.btn-lg,.hero .hero-h1,.hero .hero-h1-sub{animation:none;}}
 /* Diagonal accent bar */
 .hero-stripe{
@@ -178,9 +178,8 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   background:rgba(100,160,255,0.1);
   border-color:rgba(100,160,255,0.7);transform:translateY(-1px);
 }
-.btn-lg{font-size:0.85rem;padding:1.2rem 3.2rem;letter-spacing:0.16em;animation:btnFloat 4.6s ease-in-out infinite, btnGlow 4.6s ease-in-out infinite;}
-@keyframes btnFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-@keyframes btnGlow{0%,100%{box-shadow:0 6px 24px rgba(0,96,240,0.32)}50%{box-shadow:0 12px 44px rgba(0,130,255,0.62)}}
+.btn-lg{font-size:0.85rem;padding:1.2rem 3.2rem;letter-spacing:0.16em;animation:btnGlow 3.4s ease-in-out infinite;}
+@keyframes btnGlow{0%,100%{box-shadow:0 6px 22px rgba(0,96,240,0.30)}50%{box-shadow:0 10px 44px rgba(0,130,255,0.65)}}
 .hero-stats{
   display:grid;grid-template-columns:repeat(4,1fr);
   border-top:1px solid rgba(255,255,255,0.08);
