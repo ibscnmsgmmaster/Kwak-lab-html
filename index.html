@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>NCEL Laboratory | Yonsei University</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 :root{
   --bg:#ffffff;
@@ -16,11 +16,13 @@
   --accent:#003087;
   --accent2:#0047c8;
   --border:#e8e8ec;
+  --bg-tint:#f4f6fa;
+  --radius:10px;
   --nav-h:68px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);line-height:1.72;font-size:16px;-webkit-font-smoothing:antialiased;}
+body{font-family:'Inter','Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);line-height:1.72;font-size:16px;-webkit-font-smoothing:antialiased;}
 
 /* ── NAV ── */
 .nav{
@@ -51,7 +53,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 /* ── SHARED ── */
 .pg{padding-top:var(--nav-h);min-height:100vh;}
 .wrap{max-width:1100px;margin:0 auto;padding:0 2.5rem;}
-.sec{padding:6rem 0;}
+.sec{padding:5rem 0;}
 .sec-alt{background:var(--bg2);}
 .label{
   display:inline-block;font-size:0.65rem;font-weight:600;
@@ -59,6 +61,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   color:var(--accent);margin-bottom:1.2rem;
 }
 .h2{
+  font-family:'Source Serif 4',serif;
   font-size:clamp(1.85rem,3.2vw,2.6rem);font-weight:600;
   letter-spacing:-0.01em;color:var(--text);
   line-height:1.2;margin-bottom:1.4rem;
@@ -158,7 +161,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .hero-ctas{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:2.8rem;}
 .btn{
   font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
-  padding:0.9rem 2.2rem;border-radius:2px;cursor:pointer;
+  padding:0.9rem 2.2rem;border-radius:var(--radius);cursor:pointer;
   transition:all 0.25s;display:inline-block;text-decoration:none;
 }
 .btn-fill{
@@ -293,7 +296,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .mcard{cursor:default;transition:all 0.25s;}
 
 .mphoto{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
-.mpholder{width:100%;aspect-ratio:1/1;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:600;color:var(--text3);font-family:'Montserrat',sans-serif;}
+.mpholder{width:100%;aspect-ratio:1/1;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:600;color:var(--text3);font-family:'Inter',sans-serif;}
 .minfo{padding:0.8rem 0 0;}
 .mname{font-size:0.88rem;font-weight:600;color:var(--text);margin-bottom:0.15rem;}
 .mdeg{font-size:0.72rem;color:var(--accent);font-weight:500;margin-bottom:0.2rem;}
@@ -310,7 +313,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .pub-filter{display:flex;gap:0.5rem;margin-bottom:3rem;flex-wrap:wrap;}
 .pub-fbtn{
   font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
-  padding:0.5rem 1.2rem;border:1px solid var(--border);border-radius:2px;
+  padding:0.5rem 1.2rem;border:1px solid var(--border);border-radius:var(--radius);
   cursor:pointer;transition:all 0.2s;background:none;color:var(--text2);
 }
 .pub-fbtn:hover,.pub-fbtn.on{background:var(--accent);color:#fff;border-color:var(--accent);}
@@ -335,12 +338,12 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 
 /* ── NEWS ── */
 .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;margin-top:3rem;}
-.home-sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;}
-.home-h2{font-size:clamp(1.3rem,2.4vw,1.7rem);font-weight:600;letter-spacing:-0.01em;color:var(--text);line-height:1.2;}
+.home-sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding-bottom:1.15rem;border-bottom:1px solid var(--border);}
+.home-h2{font-family:'Source Serif 4',serif;font-size:clamp(1.5rem,2.7vw,2rem);font-weight:600;letter-spacing:-0.01em;color:var(--text);line-height:1.15;}
 .home-more{background:none;border:none;cursor:pointer;font-family:inherit;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);white-space:nowrap;transition:opacity 0.2s;}
 .home-more:hover{opacity:0.55;}
-.ncard{cursor:pointer;transition:all 0.25s;border:1px solid var(--border);}
-.ncard:hover{box-shadow:0 8px 32px rgba(0,48,135,0.08);transform:translateY(-2px);}
+.ncard{cursor:pointer;transition:transform 0.25s,box-shadow 0.25s;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff;}
+.ncard:hover{box-shadow:0 10px 34px rgba(0,48,135,0.12);transform:translateY(-3px);border-color:rgba(0,48,135,0.18);}
 .nimg{width:100%;height:280px;object-fit:contain;background:var(--bg2);display:block;filter:grayscale(10%);transition:filter 0.3s;}
 .ncard:hover .nimg{filter:grayscale(0%);}
 .nbody{padding:1.5rem;}
@@ -483,6 +486,17 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
     linear-gradient(to left,rgba(3,7,30,0.45) 0%,rgba(3,7,30,0) 16%);
 }
 
+
+/* ── PAGE HEADER SYSTEM ── */
+.page-head{background:var(--bg-tint);border-bottom:1px solid var(--border);padding:3.4rem 0 2.8rem;}
+.page-eyebrow{display:block;font-size:0.66rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;}
+.page-title{font-family:'Source Serif 4',serif;font-size:clamp(2rem,3.6vw,2.95rem);font-weight:600;letter-spacing:-0.012em;color:var(--text);line-height:1.12;}
+.page-intro{font-size:1.02rem;color:var(--text2);line-height:1.8;max-width:64ch;margin-top:1.1rem;}
+.page-head + .sec{padding-top:3rem;}
+/* featured publication card image (meta now sits outside image) */
+.pcard-img{width:100%;height:188px;object-fit:cover;display:block;background:var(--bg2);}
+/* home grids sit snug under their section head */
+.home-grid{margin-top:2rem;}
 </style>
 </head>
 <body>
@@ -844,13 +858,13 @@ function Home({go}){
     </div>
 
     {/* FEATURED PUBLICATIONS */}
-    <section className="sec" style={{paddingTop:"2.5rem"}}>
+    <section className="sec" style={{paddingTop:"4.5rem"}}>
       <div className="wrap">
         <div className="home-sec-head">
           <h2 className="home-h2">Featured Publications</h2>
-          <button className="home-more" onClick={()=>go("publications")}>More →</button>
+          <button className="home-more" onClick={()=>go("publications")}>All publications →</button>
         </div>
-        <div className="news-grid" style={{gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",marginTop:"3.6rem"}}>
+        <div className="news-grid home-grid" style={{gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))"}}>
           {[
             {
               journal:"Nature Nanotechnology",year:2024,
@@ -874,30 +888,25 @@ function Home({go}){
               img:"images/image8.jpg"
             },
           ].map((p,i)=><div key={i} className="ncard" onClick={()=>window.open("https://doi.org/"+p.doi,"_blank")}>
-            <div style={{position:"relative",overflow:"hidden"}}>
-              <div style={{position:"absolute",top:0,left:0,right:0,zIndex:2,background:"rgba(10,14,30,0.82)",padding:"0.6rem 1rem"}}>
-                <span style={{fontSize:"0.6rem",fontWeight:700,letterSpacing:"0.15em",textTransform:"uppercase",color:"rgba(255,255,255,0.7)"}}>{p.journal} · {p.year}</span>
-              </div>
-              <img src={p.img} alt={p.title} style={{width:"100%",height:"200px",objectFit:"cover",display:"block",filter:"grayscale(8%)"}}/>
-            </div>
+            <img src={p.img} alt={p.title} className="pcard-img"/>
             <div className="nbody">
-              <div className="ntitle" style={{fontSize:"0.9rem",fontWeight:600,marginBottom:"0.5rem"}}>{p.title}</div>
-              <div className="ndate" style={{marginBottom:"0.5rem"}}>{p.authors}</div>
-              <span className="ntag" style={{marginTop:"0.3rem"}}>{p.journal}</span>
+              <span className="ntag">{p.journal} · {p.year}</span>
+              <div className="ntitle" style={{fontSize:"0.95rem"}}>{p.title}</div>
+              <div className="ndate">{p.authors}</div>
             </div>
           </div>)}
         </div>
       </div>
     </section>
 
-    {/* NEWS & FEATURED PUB */}
-    <section className="sec" style={{background:"#eef3fb",paddingTop:"2.5rem"}}>
+    {/* NEWS & GALLERY */}
+    <section className="sec" style={{background:"var(--bg-tint)",borderTop:"1px solid var(--border)"}}>
       <div className="wrap">
         <div className="home-sec-head">
           <h2 className="home-h2">News & Gallery</h2>
-          <button className="home-more" onClick={()=>go("news")}>More →</button>
+          <button className="home-more" onClick={()=>go("news")}>All updates →</button>
         </div>
-        <div className="news-grid" style={{marginTop:"3.6rem"}}>
+        <div className="news-grid home-grid">
           {NW.slice(0,4).map((n,i)=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
             <img src={n.img} alt={n.title} className="nimg"/>
             <div className="nbody">
@@ -914,10 +923,13 @@ function Home({go}){
 
 function Research(){
   return <div className="pg">
+    <div className="page-head"><div className="wrap">
+      <span className="page-eyebrow">Research</span>
+      <h1 className="page-title">Research Areas</h1>
+      <p className="page-intro">We build nanoscale and synthetic tools that convert physical energy into precise signaling inputs — then apply them to wirelessly control the brain and engineer immunity in living systems.</p>
+    </div></div>
     <section className="sec">
       <div className="wrap">
-        <h2 className="h2">Research Areas</h2>
-        <p className="body-text" style={{marginBottom:"3rem",color:"var(--text)",maxWidth:"50rem",fontSize:"1rem"}}>We build nanoscale and synthetic tools that convert physical energy into precise signaling inputs — then apply them to wirelessly control the brain and engineer immunity in living systems.</p>
         <div className="res-list">
           {RA.map(r=><div key={r.n} className="res-full-item">
             <div style={{display:"grid",gridTemplateColumns:"80px 1fr",gap:"2rem",alignItems:"start"}}>
@@ -952,10 +964,13 @@ function Research(){
 
 function PIPage(){
   return <div className="pg">
+    <div className="page-head"><div className="wrap">
+      <span className="page-eyebrow">The Team</span>
+      <h1 className="page-title">Principal Investigator</h1>
+    </div></div>
     <section className="sec">
       <div className="wrap">
-        <h2 className="h2">Principal Investigator</h2>
-        <div className="pi-layout" style={{marginTop:"3rem"}}>
+        <div className="pi-layout">
           <div>
             <img src={PI.image} alt={PI.name} className="pi-photo" onError={e=>{e.target.style.display="none";}}/>
           </div>
@@ -981,11 +996,14 @@ function PIPage(){
 
 function Members(){
   return <div className="pg">
+    <div className="page-head"><div className="wrap">
+      <span className="page-eyebrow">The Team</span>
+      <h1 className="page-title">Members</h1>
+    </div></div>
     <section className="sec">
       <div className="wrap">
-        <h2 className="h2">Members</h2>
         {/* Postdoc */}
-        <div className="msec-title" style={{marginTop:"3rem"}}>Postdoctoral Researchers</div>
+        <div className="msec-title" style={{marginTop:"0"}}>Postdoctoral Researchers</div>
         <div className="mgrid" style={{gridTemplateColumns:"repeat(auto-fill,minmax(210px,1fr))"}}>{PD.map(m=><MCard key={m.name} m={m}/>)}</div>
         {/* Grad */}
         <div className="msec-title">Graduate Students</div>
@@ -1010,10 +1028,13 @@ function Members(){
 function Publications(){
   const [f,sF]=useState("all");
   return <div className="pg">
+    <div className="page-head"><div className="wrap">
+      <span className="page-eyebrow">Research Output</span>
+      <h1 className="page-title">Publications</h1>
+      <p className="page-intro">* denotes corresponding author · # denotes co-first author</p>
+    </div></div>
     <section className="sec">
       <div className="wrap">
-        <h2 className="h2">Publications</h2>
-        <p className="body-text" style={{marginBottom:"2.5rem"}}>* denotes corresponding author · # denotes co-first author</p>
         <div className="pub-filter">
           {["all","yonsei","ucsf","yale"].map(k=><button key={k} className={"pub-fbtn"+(f===k?" on":"")} onClick={()=>sF(k)}>
             {k==="all"?"All":k==="yonsei"?"Yonsei (2021–)":k==="ucsf"?"UCSF (2017–20)":"Yale (2011–16)"}
@@ -1041,9 +1062,12 @@ function Publications(){
 function News({go}){
   const items=NW.map((n,i)=>({n,i})).filter(x=>x.n.board==="news");
   return <div className="pg">
+    <div className="page-head"><div className="wrap">
+      <span className="page-eyebrow">Updates</span>
+      <h1 className="page-title">News</h1>
+    </div></div>
     <section className="sec">
       <div className="wrap">
-        <h2 className="h2">News</h2>
         <div className="news-grid">
           {items.map(({n,i})=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
             <img src={n.img} alt={n.title} className="nimg"/>
@@ -1062,9 +1086,12 @@ function News({go}){
 function Gallery({go}){
   const items=NW.map((n,i)=>({n,i})).filter(x=>x.n.board==="gallery");
   return <div className="pg">
+    <div className="page-head"><div className="wrap">
+      <span className="page-eyebrow">Photos</span>
+      <h1 className="page-title">Gallery</h1>
+    </div></div>
     <section className="sec">
       <div className="wrap">
-        <h2 className="h2">Gallery</h2>
         <div className="news-grid">
           {items.map(({n,i})=><div key={i} className="ncard" onClick={()=>go("newspost",i)}>
             <img src={n.img} alt={n.title} className="nimg"/>
@@ -1082,12 +1109,13 @@ function Gallery({go}){
 
 function Join(){
   return <div className="pg">
+    <div className="page-head"><div className="wrap">
+      <span className="page-eyebrow">Join Us</span>
+      <h1 className="page-title">Join the Lab</h1>
+      <p className="page-intro">We are always seeking highly motivated and collegial colleagues to work at the interface of nanoscience, synthetic biology, and cell biology — to investigate how cell signaling works and develop next-generation cellular therapeutics.</p>
+    </div></div>
     <section className="sec">
       <div className="wrap">
-        <div className="join-top">
-          <h2 className="h2" style={{margin:"0 auto 1.5rem"}}>Join the Lab</h2>
-          <p className="body-text" style={{margin:"0 auto",textAlign:"center"}}>We are always seeking highly motivated and collegial colleagues to work at the interface of nanoscience, synthetic biology, and cell biology — to investigate how cell signaling works and develop next-generation cellular therapeutics.</p>
-        </div>
         <div style={{marginBottom:"3rem"}}>
           <span className="label">Open Positions</span>
           <div className="pos-list">
